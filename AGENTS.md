@@ -2,18 +2,17 @@
 
 ## Cursor Cloud specific instructions
 
-This repository (`talk-to-your-slackbot`) is currently an empty project scaffold containing only a `README.md`. There is no application code, no dependency files, no tests, and no build configuration.
+### Overview
+TypeScript project providing typed interfaces and Zod runtime validation for pickleball game stats JSON (v2.1.0 / v2.2.0 format). No backend services or databases.
 
-### Current state
-- **Language/Framework:** Not yet determined
-- **Package manager:** Not yet determined
-- **Services:** None defined
-- **Tests:** None exist
-- **Lint:** No linter configured
-- **Build/Run:** No build or run commands available
+### Commands
+See `package.json` scripts. Key commands:
+- `npm run lint` — type-check via `tsc --noEmit`
+- `npm test` — vitest suite (23 tests)
+- `npm run build` — compile to `dist/`
+- `npm run validate` — validate `data/stats.json` against Zod schema
 
-### When code is added
-Once the project has code, update this file and the VM update script with:
-- Dependency installation commands (e.g. `npm install`, `pip install -r requirements.txt`)
-- How to run lint, tests, build, and dev server
-- Any non-obvious environment setup caveats
+### Gotchas
+- Zod v4 uses `import { z } from "zod/v4"` (not `from "zod"`).
+- The `tsconfig.json` `include` is scoped to `src/`; tests live in `tests/` and are run by vitest (which has its own TS handling via `vitest.config.ts`).
+- The sample `data/stats.json` is v2.1.0 and lacks `team_kitchen_arrival` (added in v2.2.0); the schema marks that field optional.
