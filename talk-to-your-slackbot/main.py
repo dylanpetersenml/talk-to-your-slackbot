@@ -1,13 +1,9 @@
 """
-Entrypoint: wire Slack-style input into the intake subsystem.
+Entrypoint: intake -> engine (load stats) -> (later: planner, reasoner, output).
 
 Run from repo root with the package on PYTHONPATH, e.g.:
-  PYTHONPATH=talk-to-your-slackbot python -m talk-to-your-slackbot.main
-or from the package directory:
-  python main.py
-
-Example assumed input: "why did I lose" is parsed and validated by the
-input/intake component before being passed to the engine (not yet implemented).
+  PYTHONPATH=talk-to-your-slackbot python talk-to-your-slackbot/main.py
+Stats path: STATS_PATH env or default stats.json (relative to cwd).
 """
 
 import sys
@@ -20,6 +16,7 @@ if __name__ == "__main__":
         sys.path.insert(0, str(pkg_dir))
 
 from intake import IntakeRejection, RawSlackInput, process
+from engine import LoadError, load_stats
 
 
 def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
@@ -45,7 +42,7 @@ def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
 
 
 def main():
-    """Example: parse and validate an assumed input string."""
+    """Example: intake then load stats (PandasAI-compatible DataFrames)."""
     assumed_input = "why did I lose"
     result = run_intake(assumed_input)
 
@@ -53,7 +50,17 @@ def main():
         print("Rejected:", result.reason, f"(code={result.code})")
         return 1
 
+    # Engine: load stats (compatible with PandasAI + pickleball_stats.yaml).
+    stats_path = Path(__file__).resolve().parent.parent / "stats.json"
+    loaded = load_stats(stats_path)
+
+    if isinstance(loaded, LoadError):
+        print("Stats load failed:", loaded.message)
+        return 1
+
     print("Validated:", result.text)
+    print("Stats loaded: game_id =", loaded.game_df["game_id"].iloc[0])
+    print("DataFrames ready for PandasAI: game_df, players_df")
     return 0
 
 
