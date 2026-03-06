@@ -3,7 +3,7 @@ Entrypoint: intake -> engine (load stats -> plan -> reason) -> (later: output).
 
 Run from repo root with the package on PYTHONPATH, e.g.:
   PYTHONPATH=talk-to-your-slackbot python talk-to-your-slackbot/main.py
-Stats path: STATS_PATH env or default stats.json. Set OPENAI_API_KEY for PandasAI reasoner.
+Stats path: STATS_PATH env or default stats.json. Set OPENAI_API_KEY for reasoner (Custom GPT / OpenAI API).
 """
 
 import sys
@@ -64,7 +64,7 @@ def main():
     print("Stats loaded: game_id =", loaded.game_df["game_id"].iloc[0])
     print("Plan: intent =", investigation_plan.intent, "| focus_tables =", investigation_plan.focus_tables)
 
-    # Reasoner: PandasAI analysis using semantic layer (pickleball_stats.yaml).
+    # Reasoner: send data + context to OpenAI API (Custom GPT style).
     reasoning = reason(result.text, loaded, investigation_plan)
     if reasoning.error:
         print("Reasoner:", reasoning.error)

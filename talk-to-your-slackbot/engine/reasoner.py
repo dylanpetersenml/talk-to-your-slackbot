@@ -1,8 +1,9 @@
 """
-Reasoner: analyze key factors using PandasAI over loaded stats and the semantic layer.
+Reasoner: analyze match stats by sending data + context to the OpenAI API (Custom GPT style).
 
-Uses pickleball_stats.yaml for context (entities: game, players, shot_stats,
-kitchen_arrival, ball_directions). Focuses on tables and hints from the Plan.
+Builds a data payload from loaded stats and the plan, plus semantic context from
+pickleball_stats.yaml, and calls the Chat Completions API so the model has full
+data and context to produce a coaching summary.
 """
 
 import os
@@ -16,6 +17,9 @@ from .models import LoadedStats, Plan, ReasonerResult
 _REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 _SEMANTIC_YAML = _REPO_ROOT / "pickleball_stats.yaml"
 
+# Max rows per table in the payload to avoid token overflow.
+_MAX_DATA_ROWS = 50
+
 
 def _load_semantic_context(yaml_path: Path | None = None) -> str:
     """Load short semantic context from pickleball_stats.yaml for the prompt."""
@@ -27,7 +31,7 @@ def _load_semantic_context(yaml_path: Path | None = None) -> str:
             "drives, dinks, etc.), kitchen arrival by role, and ball direction counts."
         )
     try:
-        import yaml  # optional: pyyaml for full semantic context
+        import yaml
     except ImportError:
         return (
             "Pickleball match statistics: game (outcomes, kitchen %), players (shot counts, "
@@ -55,14 +59,22 @@ def _load_semantic_context(yaml_path: Path | None = None) -> str:
         return "Pickleball match statistics (game, players, shot types, kitchen arrival, directions)."
 
 
-def _build_lake(loaded: LoadedStats, plan: Plan):
-    """Build PandasAI SmartDatalake from loaded DataFrames, using plan focus order."""
+def _df_to_text(df: pd.DataFrame, name: str, max_rows: int = _MAX_DATA_ROWS) -> str:
+    """Serialize a DataFrame to readable text for the prompt."""
+    if df is None or (isinstance(df, pd.DataFrame) and df.empty):
+        return f"{name}: (no data)"
+    head = df.head(max_rows)
     try:
-        from pandasai import SmartDatalake, SmartDataframe
-    except ImportError:
-        return None, "pandasai is not installed. Install with: pip install pandasai"
+        return f"{name}:\n{head.to_markdown(index=False)}"
+    except (AttributeError, Exception):
+        return f"{name}:\n{head.to_string()}"
 
-    # Order tables: put plan focus_tables first, then the rest.
+
+def _build_data_payload(loaded: LoadedStats, plan: Plan) -> str:
+    """Build a single text payload of all relevant tables for the Custom GPT input."""
+    parts = []
+    # Order by plan focus so the model sees priority tables first.
+    focus_set = set(plan.focus_tables)
     table_order = [
         ("game_df", loaded.game_df),
         ("players_df", loaded.players_df),
@@ -70,63 +82,37 @@ def _build_lake(loaded: LoadedStats, plan: Plan):
         ("kitchen_arrival_df", loaded.kitchen_arrival_df),
         ("ball_directions_df", loaded.ball_directions_df),
     ]
-    focus_set = set(plan.focus_tables)
     ordered = sorted(table_order, key=lambda x: (x[0] not in focus_set, x[0]))
-    config = {}
-    api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("PANDASAI_OPENAI_API_KEY")
-    if api_key:
-        llm_cls = None
-        from importlib import import_module
-        # Try pandasai 2.x / 3.x locations and optional pandasai-openai.
-        for module in (
-            "pandasai.llm",
-            "pandasai.llms",
-            "pandasai.llm.openai",
-            "pandasai_openai",  # optional extra: pip install pandasai-openai
-        ):
-            try:
-                mod = import_module(module)
-                llm_cls = getattr(mod, "OpenAI", None)
-                if llm_cls is not None:
-                    break
-            except ImportError:
-                continue
-        if llm_cls is not None:
-            try:
-                config["llm"] = llm_cls(api_token=api_key)
-            except TypeError:
-                try:
-                    config["llm"] = llm_cls(api_key=api_key)
-                except Exception:
-                    config["llm"] = None
-            except Exception:
-                config["llm"] = None
-        else:
-            config["llm"] = None
-    else:
-        config["llm"] = None
+    for name, df in ordered:
+        if df is not None and not (isinstance(df, pd.DataFrame) and df.empty):
+            parts.append(_df_to_text(df, name))
+    return "\n\n---\n\n".join(parts) if parts else "(no match data)"
 
-    if config.get("llm") is None:
-        if api_key:
-            return None, (
-                "PandasAI could not load the OpenAI LLM. Install the extra: "
-                "pip install 'pandasai[openai]' or pip install pandasai-openai. "
-                "Then ensure OPENAI_API_KEY is set."
-            )
-        return None, (
-            "LLM not configured. Set OPENAI_API_KEY (or PANDASAI_OPENAI_API_KEY) "
-            "for PandasAI to analyze the data."
+
+def _call_openai(system_content: str, user_content: str) -> str | None:
+    """Call OpenAI Chat Completions; return assistant content or None on failure."""
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key or not api_key.strip():
+        return None
+    model = os.environ.get("OPENAI_MODEL", "gpt-4o-mini")
+    try:
+        from openai import OpenAI
+        client = OpenAI(api_key=api_key)
+        resp = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_content},
+                {"role": "user", "content": user_content},
+            ],
+            max_tokens=500,
         )
-
-    smart_dfs = []
-    for _name, df in ordered:
-        if df is None or (isinstance(df, pd.DataFrame) and df.empty):
-            continue
-        smart_dfs.append(SmartDataframe(df, config={"llm": config["llm"]}))
-    if not smart_dfs:
-        return None, "No data available to analyze."
-    lake = SmartDatalake(smart_dfs, config={"llm": config["llm"]})
-    return lake, None
+        if resp.choices and len(resp.choices) > 0:
+            msg = resp.choices[0].message
+            if msg and msg.content:
+                return msg.content.strip()
+    except Exception:
+        pass
+    return None
 
 
 def reason(
@@ -136,11 +122,11 @@ def reason(
     semantic_yaml_path: Path | None = None,
 ) -> ReasonerResult:
     """
-    Run PandasAI analysis on the loaded stats to answer the question.
+    Run analysis by sending match data and context to the OpenAI API (Custom GPT style).
 
-    Uses the semantic layer (pickleball_stats.yaml) for context and the plan's
-    focus_tables to prioritize relevant data. Analyzes key factors such as
-    return depth, kitchen arrival, and shot directions when present in the data.
+    Builds a data payload from loaded DataFrames and semantic context from
+    pickleball_stats.yaml, then calls the Chat Completions API so the model
+    has full data and context to answer the question.
 
     Parameters
     ----------
@@ -159,24 +145,38 @@ def reason(
         response with analysis text, or error with a user-friendly message.
     """
     context = _load_semantic_context(semantic_yaml_path)
-    lake, err = _build_lake(loaded, plan)
-    if err:
-        return ReasonerResult(error=err)
+    data_payload = _build_data_payload(loaded, plan)
 
-    prompt = (
-        f"Context: {context}\n\n"
-        f"Focus on these tables for this question: {', '.join(plan.focus_tables)}. "
-        f"Answer in 2-4 short sentences suitable for a coaching summary.\n\n"
+    # Optional: use custom GPT instructions as system prompt (paste from ChatGPT custom GPT).
+    custom_system = os.environ.get("CUSTOM_GPT_SYSTEM_PROMPT", "").strip()
+    if custom_system:
+        system_content = custom_system + "\n\nUse the following semantic context about the data:\n" + context
+    else:
+        system_content = (
+            "You are a pickleball coaching analyst. You receive match statistics and a question. "
+            "Answer in 2–4 short sentences suitable for a coaching summary. Focus on shot quality, "
+            "errors, kitchen arrival, and shot patterns when relevant.\n\n"
+            "Semantic context for the data:\n" + context
+        )
+
+    user_content = (
+        "Match data (tables):\n\n"
+        f"{data_payload}\n\n"
+        f"Focus for this question: {', '.join(plan.focus_tables)}. "
+        f"Intent: {plan.intent}.\n\n"
         f"Question: {question}"
     )
+
+    if not os.environ.get("OPENAI_API_KEY", "").strip():
+        return ReasonerResult(
+            error="OPENAI_API_KEY is not set. Set it to use the reasoner (Custom GPT / OpenAI API)."
+        )
+
     try:
-        response = lake.chat(prompt)
-        if response is None:
-            return ReasonerResult(error="Analysis produced no response.")
-        text = str(response).strip()
-        return ReasonerResult(response=text if text else None)
+        response = _call_openai(system_content, user_content)
     except Exception as e:
-        msg = str(e).strip()
-        if not msg:
-            msg = "Analysis failed."
-        return ReasonerResult(error=f"Analysis failed: {msg}")
+        return ReasonerResult(error=f"API call failed: {str(e).strip() or 'Unknown error'}")
+
+    if not response:
+        return ReasonerResult(error="Model produced no response.")
+    return ReasonerResult(response=response)
