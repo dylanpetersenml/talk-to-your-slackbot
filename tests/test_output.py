@@ -6,9 +6,12 @@ from output import (
     FormatterInput,
     FormattedOutput,
     OutputRejection,
+    SendResult,
     apply_output_guardrails,
     format_for_slack,
     process_output,
+    send_output_to_slack,
+    send_to_slack,
 )
 
 
