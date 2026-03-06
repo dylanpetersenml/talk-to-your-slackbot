@@ -1,21 +1,24 @@
-[project]
+[tool.poetry]
 name = "talk-to-your-slackbot"
 version = "0.1.0"
 description = "Pickleball match review Slackbot using PB Vision stats"
 readme = "README.md"
-requires-python = ">=3.10"
-dependencies = ["pandas>=2.0", "pyyaml>=6.0"]
-
-[project.optional-dependencies]
-dev = ["pytest>=7.0"]
-reasoner = ["pandasai>=2.0"]
-
-[tool.poetry]
 package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.12"
+pandas = "^2.0"
+pyyaml = "^6.0"
+pandasai = { version = "^2.0", optional = true }
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.0"
+
+[tool.poetry.extras]
+reasoner = ["pandasai"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["talk-to-your-slackbot"]
 
 [tool.ruff]
 line-length = 88
