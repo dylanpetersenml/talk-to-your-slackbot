@@ -20,7 +20,7 @@ from engine import LoadError, load_stats, plan, reason
 from output import FormatterInput, OutputRejection, process_output, send_output_to_slack
 
 
-def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
+def run_intake(text: str, user_id: str = "U1", channel_id: str = "D0AJGBPE8SK"):
     """
     Take raw Slack-style input text and run it through the intake subsystem.
 
