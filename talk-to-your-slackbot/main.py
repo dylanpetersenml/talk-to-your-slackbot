@@ -60,7 +60,12 @@ def main():
 
     print("Validated:", result.text)
     print("Stats loaded: game_id =", loaded.game_df["game_id"].iloc[0])
-    print("DataFrames ready for PandasAI: game_df, players_df")
+    print("DataFrames ready for PandasAI:")
+    print("  game_df:", loaded.game_df.shape)
+    print("  players_df:", loaded.players_df.shape)
+    print("  shot_stats_df:", loaded.shot_stats_df.shape)
+    print("  kitchen_arrival_df:", loaded.kitchen_arrival_df.shape)
+    print("  ball_directions_df:", loaded.ball_directions_df.shape)
     return 0
 
 

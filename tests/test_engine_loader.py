@@ -54,14 +54,26 @@ def test_load_stats_success_returns_dataframes():
     assert "session" in result.raw and "game" in result.raw and "players" in result.raw
     assert isinstance(result.game_df, pd.DataFrame)
     assert isinstance(result.players_df, pd.DataFrame)
+    assert isinstance(result.shot_stats_df, pd.DataFrame)
+    assert isinstance(result.kitchen_arrival_df, pd.DataFrame)
+    assert isinstance(result.ball_directions_df, pd.DataFrame)
     assert len(result.game_df) == 1
     assert len(result.players_df) >= 1
-    # Columns aligned with semantic model
+    # Many columns in game and players, not just a single summary
+    assert len(result.game_df.columns) >= 14
+    assert len(result.players_df.columns) >= 18
     assert "game_id" in result.game_df.columns
     assert "avg_shots" in result.game_df.columns
     assert "player_id" in result.players_df.columns
-    assert "game_id" in result.players_df.columns
     assert "shot_count" in result.players_df.columns
+    assert "team_thirds_percentage" in result.players_df.columns
+    # Shot stats and related tables have many rows
+    assert len(result.shot_stats_df) >= 1
+    assert "shot_type" in result.shot_stats_df.columns
+    assert len(result.ball_directions_df) >= 1
+    assert "direction" in result.ball_directions_df.columns
+    assert len(result.kitchen_arrival_df) >= 1
+    assert "role" in result.kitchen_arrival_df.columns
 
 
 def test_load_stats_minimal_valid(tmp_path):
@@ -87,6 +99,12 @@ def test_load_stats_minimal_valid(tmp_path):
                 "net_impact_score": 0.5,
                 "net_fault_percentage": 0,
                 "out_fault_percentage": 0,
+                "ball_directions": {"down_the_middle_count": 3},
+                "kitchen_arrival_percentage": {
+                    "serving": {"oneself": {"numerator": 2, "denominator": 2}},
+                    "returning": {"oneself": {"numerator": 1, "denominator": 1}},
+                },
+                "serves": {"count": 2, "average_quality": 0.8, "outcome_stats": {"success_percentage": 100}, "speed_stats": {"average": 40}},
             },
         ],
     }
@@ -96,3 +114,6 @@ def test_load_stats_minimal_valid(tmp_path):
     assert result.game_df["game_id"].iloc[0] == "test1"
     assert result.players_df["player_id"].iloc[0] == 0
     assert result.players_df["shot_count"].iloc[0] == 10
+    assert len(result.shot_stats_df) >= 1
+    assert len(result.kitchen_arrival_df) >= 1
+    assert len(result.ball_directions_df) >= 1
