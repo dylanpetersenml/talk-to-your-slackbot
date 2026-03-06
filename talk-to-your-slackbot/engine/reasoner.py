@@ -75,12 +75,23 @@ def _build_lake(loaded: LoadedStats, plan: Plan):
     config = {}
     api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("PANDASAI_OPENAI_API_KEY")
     if api_key:
-        try:
-            from pandasai.llms import OpenAI
-            config["llm"] = OpenAI(api_token=api_key)
-        except Exception as e:
+        llm_cls = None
+        for module in ("pandasai.llm", "pandasai.llms", "pandasai.llm.openai"):
+            try:
+                from importlib import import_module
+                mod = import_module(module)
+                llm_cls = getattr(mod, "OpenAI", None)
+                if llm_cls is not None:
+                    break
+            except ImportError:
+                continue
+        if llm_cls is not None:
+            try:
+                config["llm"] = llm_cls(api_token=api_key)
+            except Exception:
+                config["llm"] = None
+        else:
             config["llm"] = None
-            config["_llm_error"] = str(e)
     else:
         config["llm"] = None
 
