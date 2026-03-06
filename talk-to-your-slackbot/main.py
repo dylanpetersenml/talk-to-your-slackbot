@@ -1,9 +1,9 @@
 """
-Entrypoint: intake -> engine (load stats -> plan) -> (later: reasoner, output).
+Entrypoint: intake -> engine (load stats -> plan -> reason) -> (later: output).
 
 Run from repo root with the package on PYTHONPATH, e.g.:
   PYTHONPATH=talk-to-your-slackbot python talk-to-your-slackbot/main.py
-Stats path: STATS_PATH env or default stats.json (relative to cwd).
+Stats path: STATS_PATH env or default stats.json. Set OPENAI_API_KEY for PandasAI reasoner.
 """
 
 import sys
@@ -16,7 +16,7 @@ if __name__ == "__main__":
         sys.path.insert(0, str(pkg_dir))
 
 from intake import IntakeRejection, RawSlackInput, process
-from engine import LoadError, load_stats, plan
+from engine import LoadError, load_stats, plan, reason
 
 
 def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
@@ -63,12 +63,13 @@ def main():
     print("Validated:", result.text)
     print("Stats loaded: game_id =", loaded.game_df["game_id"].iloc[0])
     print("Plan: intent =", investigation_plan.intent, "| focus_tables =", investigation_plan.focus_tables)
-    print("DataFrames ready for PandasAI:")
-    print("  game_df:", loaded.game_df.shape)
-    print("  players_df:", loaded.players_df.shape)
-    print("  shot_stats_df:", loaded.shot_stats_df.shape)
-    print("  kitchen_arrival_df:", loaded.kitchen_arrival_df.shape)
-    print("  ball_directions_df:", loaded.ball_directions_df.shape)
+
+    # Reasoner: PandasAI analysis using semantic layer (pickleball_stats.yaml).
+    reasoning = reason(result.text, loaded, investigation_plan)
+    if reasoning.error:
+        print("Reasoner:", reasoning.error)
+    else:
+        print("Analysis:", reasoning.response)
     return 0
 
 

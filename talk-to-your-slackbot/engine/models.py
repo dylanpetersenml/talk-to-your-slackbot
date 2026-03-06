@@ -77,3 +77,20 @@ class Plan:
     intent: str
     focus_tables: list[str]
     focus_hints: dict[str, list[str]]
+
+
+@dataclass
+class ReasonerResult:
+    """
+    Output of the reasoner (PandasAI analysis).
+
+    Attributes
+    ----------
+    response : str or None
+        Natural-language analysis answer when successful.
+    error : str or None
+        User-friendly error message when analysis failed (e.g. LLM not configured).
+    """
+
+    response: str | None = None
+    error: str | None = None
