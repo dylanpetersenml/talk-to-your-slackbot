@@ -76,9 +76,15 @@ def _build_lake(loaded: LoadedStats, plan: Plan):
     api_key = os.environ.get("OPENAI_API_KEY") or os.environ.get("PANDASAI_OPENAI_API_KEY")
     if api_key:
         llm_cls = None
-        for module in ("pandasai.llm", "pandasai.llms", "pandasai.llm.openai"):
+        from importlib import import_module
+        # Try pandasai 2.x / 3.x locations and optional pandasai-openai.
+        for module in (
+            "pandasai.llm",
+            "pandasai.llms",
+            "pandasai.llm.openai",
+            "pandasai_openai",  # optional extra: pip install pandasai-openai
+        ):
             try:
-                from importlib import import_module
                 mod = import_module(module)
                 llm_cls = getattr(mod, "OpenAI", None)
                 if llm_cls is not None:
@@ -88,6 +94,11 @@ def _build_lake(loaded: LoadedStats, plan: Plan):
         if llm_cls is not None:
             try:
                 config["llm"] = llm_cls(api_token=api_key)
+            except TypeError:
+                try:
+                    config["llm"] = llm_cls(api_key=api_key)
+                except Exception:
+                    config["llm"] = None
             except Exception:
                 config["llm"] = None
         else:
@@ -96,6 +107,12 @@ def _build_lake(loaded: LoadedStats, plan: Plan):
         config["llm"] = None
 
     if config.get("llm") is None:
+        if api_key:
+            return None, (
+                "PandasAI could not load the OpenAI LLM. Install the extra: "
+                "pip install 'pandasai[openai]' or pip install pandasai-openai. "
+                "Then ensure OPENAI_API_KEY is set."
+            )
         return None, (
             "LLM not configured. Set OPENAI_API_KEY (or PANDASAI_OPENAI_API_KEY) "
             "for PandasAI to analyze the data."
