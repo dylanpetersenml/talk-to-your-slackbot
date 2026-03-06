@@ -1,0 +1,2458 @@
+{
+  "version": "2.1.0",
+  "session": {
+    "session_type": "game",
+    "num_players": 4,
+    "vid": "r3apgc2jftty",
+    "session_index": 0
+  },
+  "game": {
+    "avg_shots": 4.16,
+    "game_outcome": [7, 15],
+    "scoring": "side_out",
+    "min_points": 15,
+    "kitchen_rallies": 16,
+    "team_percentage_to_kitchen": [0.66, 0.48],
+    "longest_rally": {
+      "rally_idx": 41,
+      "num_shots": 14
+    },
+    "relative_adjustments": {
+      "between_teams": 0.507,
+      "within_teams": [-0.071, -0.046]
+    }
+  },
+  "players": [
+    {
+      "team": 0,
+      "ball_directions": {
+        "mid_cross_left_count": 2,
+        "mid_cross_right_count": 3,
+        "down_the_middle_count": 5,
+        "left_to_middle_count": 13,
+        "left_cross_right_count": 5,
+        "down_the_line_left_count": 3,
+        "right_to_middle_count": 4,
+        "right_cross_left_count": 5,
+        "down_the_line_right_count": 5
+      },
+      "role_stats": {
+        "receiving": {
+          "oneself": {
+            "total": 13,
+            "kitchen_arrival": 12
+          },
+          "partner": {
+            "total": 11,
+            "kitchen_arrival": 11
+          }
+        },
+        "serving": {
+          "oneself": {
+            "total": 4,
+            "kitchen_arrival": 4
+          },
+          "partner": {
+            "total": 4,
+            "kitchen_arrival": 3
+          }
+        }
+      },
+      "kitchen_arrival_percentage": {
+        "serving": {
+          "oneself": {
+            "numerator": 5,
+            "denominator": 5
+          },
+          "partner": {
+            "numerator": 3,
+            "denominator": 4
+          }
+        },
+        "returning": {
+          "oneself": {
+            "numerator": 11,
+            "denominator": 12
+          },
+          "partner": {
+            "numerator": 6,
+            "denominator": 8
+          }
+        }
+      },
+      "total_distance_covered": 741.48,
+      "average_x_coverage_percentage": 48.74,
+      "shot_count": 46,
+      "final_shot_count": 14,
+      "volley_count": 17,
+      "ground_stroke_count": 29,
+      "team_short_length_rallies_won": 35.14,
+      "team_medium_length_rallies_won": 33.33,
+      "team_long_length_rallies_won": 100,
+      "team_shot_percentage": 45.1,
+      "team_left_side_percentage": 48,
+      "average_shot_quality": 0.72,
+      "net_impact_score": 0.5,
+      "net_fault_percentage": 4.35,
+      "out_fault_percentage": 2.17,
+      "team_thirds_percentage": 16.67,
+      "team_fourths_percentage": 58.82,
+      "team_fifths_percentage": 28.57,
+      "serves": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 85.71,
+          "high_quality_shot_rally_won_percentage": 42.86,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 57.14
+        },
+        "count": 7,
+        "average_quality": 0.8,
+        "average_baseline_distance": 5.18,
+        "median_baseline_distance": 5.9,
+        "average_height_above_net": 0.86,
+        "median_height_above_net": 0.98,
+        "speed_stats": {
+          "fastest": 48.16,
+          "average": 42.29,
+          "median": 42.48
+        }
+      },
+      "returns": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 81.25,
+          "high_quality_shot_rally_won_percentage": 37.5,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 46.15
+        },
+        "count": 16,
+        "average_quality": 0.74,
+        "average_baseline_distance": 6.35,
+        "median_baseline_distance": 7.04,
+        "average_height_above_net": 2.35,
+        "median_height_above_net": 2.24,
+        "speed_stats": {
+          "fastest": 46.6,
+          "average": 28.26,
+          "median": 28.4
+        }
+      },
+      "thirds": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 50,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 50,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 2,
+        "average_quality": 0.46,
+        "average_baseline_distance": 20.77,
+        "median_baseline_distance": 20.77,
+        "average_height_above_net": 0.81,
+        "median_height_above_net": 0.81,
+        "speed_stats": {
+          "fastest": 26.97,
+          "average": 21.51,
+          "median": 21.51
+        }
+      },
+      "fourths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 70,
+          "high_quality_shot_rally_won_percentage": 60,
+          "low_quality_shot_rally_won_percentage": 30,
+          "out_fault_percentage": 10,
+          "net_fault_percentage": 10,
+          "rally_won_percentage": 37.5
+        },
+        "count": 10,
+        "average_quality": 0.61,
+        "average_baseline_distance": 14.27,
+        "median_baseline_distance": 12.71,
+        "average_height_above_net": 1.67,
+        "median_height_above_net": 0.86,
+        "speed_stats": {
+          "fastest": 34.05,
+          "average": 21.36,
+          "median": 22.57
+        }
+      },
+      "fifths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 100,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 2,
+        "average_quality": 0.93,
+        "average_baseline_distance": 16.58,
+        "median_baseline_distance": 16.58,
+        "average_height_above_net": 0.73,
+        "median_height_above_net": 0.73,
+        "speed_stats": {
+          "fastest": 26.77,
+          "average": 22.8,
+          "median": 22.8
+        }
+      },
+      "drives": {
+        "outcome_stats": {
+          "attempt_percentage": 20,
+          "success_percentage": 66.67,
+          "high_quality_shot_rally_won_percentage": 88.89,
+          "low_quality_shot_rally_won_percentage": 11.11,
+          "out_fault_percentage": 11.11,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 33.33
+        },
+        "count": 9,
+        "average_quality": 0.78,
+        "average_baseline_distance": 11.39,
+        "median_baseline_distance": 12.51,
+        "average_height_above_net": 1.73,
+        "median_height_above_net": 1.05,
+        "speed_stats": {
+          "fastest": 34.16,
+          "average": 24.67,
+          "median": 26.65
+        }
+      },
+      "drops": {
+        "outcome_stats": {
+          "attempt_percentage": 8.89,
+          "success_percentage": 50,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 50,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 33.33
+        },
+        "count": 4,
+        "average_quality": 0.5,
+        "average_baseline_distance": 22.54,
+        "median_baseline_distance": 21.77,
+        "average_height_above_net": 0.12,
+        "median_height_above_net": 0.12,
+        "speed_stats": {
+          "fastest": 18.84,
+          "average": 15.99,
+          "median": 15.96
+        }
+      },
+      "dinks": {
+        "outcome_stats": {
+          "attempt_percentage": 13.33,
+          "success_percentage": 83.33,
+          "high_quality_shot_rally_won_percentage": 66.67,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 6,
+        "average_quality": 0.87,
+        "average_baseline_distance": 15.61,
+        "median_baseline_distance": 15.1,
+        "average_height_above_net": 0.77,
+        "median_height_above_net": 0.28,
+        "speed_stats": {
+          "fastest": 27.84,
+          "average": 17.65,
+          "median": 16.86
+        }
+      },
+      "lobs": {
+        "count": 0
+      },
+      "smashes": {
+        "outcome_stats": {
+          "attempt_percentage": 6.67,
+          "success_percentage": 66.67,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 66.67,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 66.67,
+          "rally_won_percentage": 50
+        },
+        "count": 3,
+        "average_quality": 0.22,
+        "average_baseline_distance": 18.28,
+        "median_baseline_distance": 22,
+        "average_height_above_net": 0.12,
+        "median_height_above_net": 0.12,
+        "speed_stats": {
+          "fastest": 34.45,
+          "average": 24.29,
+          "median": 33.04
+        }
+      },
+      "third_drives": {
+        "outcome_stats": {
+          "attempt_percentage": 50,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 100,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 100
+        },
+        "count": 1,
+        "average_quality": 0.92,
+        "average_baseline_distance": 15.23,
+        "median_baseline_distance": 15.23,
+        "average_height_above_net": 0.81,
+        "median_height_above_net": 0.81,
+        "speed_stats": {
+          "fastest": 26.97,
+          "average": 26.97,
+          "median": 26.97
+        }
+      },
+      "third_drops": {
+        "outcome_stats": {
+          "attempt_percentage": 50,
+          "success_percentage": 0,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 100,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 0
+        },
+        "count": 1,
+        "average_quality": 0,
+        "average_baseline_distance": 26.32,
+        "median_baseline_distance": 26.32,
+        "speed_stats": {
+          "fastest": 16.05,
+          "average": 16.05,
+          "median": 16.05
+        }
+      },
+      "third_lobs": {
+        "count": 0
+      },
+      "resets": {
+        "outcome_stats": {
+          "attempt_percentage": 17.65,
+          "success_percentage": 66.67,
+          "high_quality_shot_rally_won_percentage": 66.67,
+          "low_quality_shot_rally_won_percentage": 33.33,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 66.67
+        },
+        "count": 3,
+        "average_quality": 0.61,
+        "average_baseline_distance": 20.35,
+        "median_baseline_distance": 20.08,
+        "average_height_above_net": 0.49,
+        "median_height_above_net": 0.49,
+        "speed_stats": {
+          "fastest": 16.05,
+          "average": 11.8,
+          "median": 9.96
+        }
+      },
+      "speedups": {
+        "count": 0
+      },
+      "passing": {
+        "outcome_stats": {
+          "attempt_percentage": 6.98,
+          "success_percentage": 33.33,
+          "high_quality_shot_rally_won_percentage": 66.67,
+          "low_quality_shot_rally_won_percentage": 33.33,
+          "out_fault_percentage": 33.33,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 33.33
+        },
+        "count": 3,
+        "average_quality": 0.62,
+        "average_baseline_distance": 9.24,
+        "median_baseline_distance": 13.88,
+        "average_height_above_net": 2.8,
+        "median_height_above_net": 0.81,
+        "speed_stats": {
+          "fastest": 34.16,
+          "average": 29.17,
+          "median": 26.97
+        }
+      },
+      "poaches": {
+        "outcome_stats": {
+          "attempt_percentage": 6.25,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 100,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 100
+        },
+        "count": 1,
+        "average_quality": 1,
+        "average_baseline_distance": 20.08,
+        "median_baseline_distance": 20.08,
+        "average_height_above_net": 0,
+        "median_height_above_net": 0,
+        "speed_stats": {
+          "fastest": 9.96,
+          "average": 9.96,
+          "median": 9.96
+        }
+      },
+      "forehands": {
+        "outcome_stats": {
+          "attempt_percentage": 70.45,
+          "success_percentage": 80.65,
+          "high_quality_shot_rally_won_percentage": 41.94,
+          "low_quality_shot_rally_won_percentage": 9.68,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 6.45,
+          "rally_won_percentage": 52.38
+        },
+        "count": 31,
+        "average_quality": 0.71,
+        "average_baseline_distance": 10.31,
+        "median_baseline_distance": 10.33,
+        "average_height_above_net": 1.34,
+        "median_height_above_net": 0.67,
+        "speed_stats": {
+          "fastest": 48.16,
+          "average": 28.06,
+          "median": 29.18
+        }
+      },
+      "backhands": {
+        "outcome_stats": {
+          "attempt_percentage": 29.55,
+          "success_percentage": 61.54,
+          "high_quality_shot_rally_won_percentage": 69.23,
+          "low_quality_shot_rally_won_percentage": 15.38,
+          "out_fault_percentage": 7.69,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 25
+        },
+        "count": 13,
+        "average_quality": 0.72,
+        "average_baseline_distance": 11.01,
+        "median_baseline_distance": 11.27,
+        "average_height_above_net": 2.13,
+        "median_height_above_net": 1.74,
+        "speed_stats": {
+          "fastest": 45.16,
+          "average": 24.32,
+          "median": 26.37
+        }
+      },
+      "left_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 54.55,
+          "success_percentage": 70.83,
+          "high_quality_shot_rally_won_percentage": 54.17,
+          "low_quality_shot_rally_won_percentage": 12.5,
+          "out_fault_percentage": 4.17,
+          "net_fault_percentage": 8.33,
+          "rally_won_percentage": 33.33
+        },
+        "count": 24,
+        "average_quality": 0.72,
+        "average_baseline_distance": 9.37,
+        "median_baseline_distance": 10.93,
+        "average_height_above_net": 2.2,
+        "median_height_above_net": 1.72,
+        "speed_stats": {
+          "fastest": 34.45,
+          "average": 25.03,
+          "median": 26.51
+        }
+      },
+      "right_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 45.45,
+          "success_percentage": 80,
+          "high_quality_shot_rally_won_percentage": 45,
+          "low_quality_shot_rally_won_percentage": 10,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 57.14
+        },
+        "count": 20,
+        "average_quality": 0.7,
+        "average_baseline_distance": 11.9,
+        "median_baseline_distance": 10.8,
+        "average_height_above_net": 0.81,
+        "median_height_above_net": 0.68,
+        "speed_stats": {
+          "fastest": 48.16,
+          "average": 29.26,
+          "median": 31.67
+        }
+      },
+      "kitchen_area": {
+        "outcome_stats": {
+          "attempt_percentage": 51.11,
+          "success_percentage": 78.26,
+          "high_quality_shot_rally_won_percentage": 56.52,
+          "low_quality_shot_rally_won_percentage": 8.7,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 46.67
+        },
+        "count": 23,
+        "average_quality": 0.72,
+        "average_baseline_distance": 15.18,
+        "median_baseline_distance": 13.88,
+        "average_height_above_net": 0.67,
+        "median_height_above_net": 0.29,
+        "speed_stats": {
+          "fastest": 46.6,
+          "average": 21.73,
+          "median": 19.29
+        }
+      },
+      "mid_court_area": {
+        "outcome_stats": {
+          "attempt_percentage": 24.44,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 18.18,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 11,
+        "average_quality": 0.75,
+        "average_baseline_distance": 7.15,
+        "median_baseline_distance": 7.08,
+        "average_height_above_net": 1.28,
+        "median_height_above_net": 1.21,
+        "speed_stats": {
+          "fastest": 48.16,
+          "average": 35.6,
+          "median": 35.03
+        }
+      },
+      "near_baseline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 11.11,
+          "success_percentage": 80,
+          "high_quality_shot_rally_won_percentage": 100,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 60
+        },
+        "count": 5,
+        "average_quality": 0.89,
+        "average_baseline_distance": 3.05,
+        "median_baseline_distance": 4.26,
+        "average_height_above_net": 3.36,
+        "median_height_above_net": 3.65,
+        "speed_stats": {
+          "fastest": 42.48,
+          "average": 31.08,
+          "median": 30.46
+        }
+      },
+      "near_midline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 68.89,
+          "success_percentage": 80.65,
+          "high_quality_shot_rally_won_percentage": 48.39,
+          "low_quality_shot_rally_won_percentage": 9.68,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 6.45,
+          "rally_won_percentage": 45
+        },
+        "count": 76,
+        "average_quality": 0.72,
+        "average_baseline_distance": 10.87,
+        "median_baseline_distance": 11.14,
+        "average_height_above_net": 1.57,
+        "median_height_above_net": 1.05,
+        "speed_stats": {
+          "fastest": 48.16,
+          "average": 26.2,
+          "median": 26.65
+        }
+      },
+      "near_left_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 20,
+          "success_percentage": 55.56,
+          "high_quality_shot_rally_won_percentage": 44.44,
+          "low_quality_shot_rally_won_percentage": 22.22,
+          "out_fault_percentage": 11.11,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 12.5
+        },
+        "count": 54,
+        "average_quality": 0.71,
+        "average_baseline_distance": 10.69,
+        "median_baseline_distance": 11.14,
+        "average_height_above_net": 1.63,
+        "median_height_above_net": 0.99,
+        "speed_stats": {
+          "fastest": 48.16,
+          "average": 26.99,
+          "median": 26.87
+        }
+      },
+      "near_right_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 11.11,
+          "success_percentage": 80,
+          "high_quality_shot_rally_won_percentage": 80,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 80
+        },
+        "count": 50,
+        "average_quality": 0.73,
+        "average_baseline_distance": 10.26,
+        "median_baseline_distance": 10.58,
+        "average_height_above_net": 1.49,
+        "median_height_above_net": 0.99,
+        "speed_stats": {
+          "fastest": 48.16,
+          "average": 28.06,
+          "median": 27.29
+        }
+      }
+    },
+    {
+      "team": 0,
+      "ball_directions": {
+        "mid_cross_left_count": 3,
+        "mid_cross_right_count": 3,
+        "down_the_middle_count": 16,
+        "left_to_middle_count": 6,
+        "left_cross_right_count": 3,
+        "down_the_line_left_count": 1,
+        "right_to_middle_count": 11,
+        "right_cross_left_count": 4,
+        "down_the_line_right_count": 9
+      },
+      "role_stats": {
+        "receiving": {
+          "oneself": {
+            "total": 11,
+            "kitchen_arrival": 9
+          },
+          "partner": {
+            "total": 13,
+            "kitchen_arrival": 13
+          }
+        },
+        "serving": {
+          "oneself": {
+            "total": 4,
+            "kitchen_arrival": 3
+          },
+          "partner": {
+            "total": 4,
+            "kitchen_arrival": 4
+          }
+        }
+      },
+      "kitchen_arrival_percentage": {
+        "serving": {
+          "oneself": {
+            "numerator": 3,
+            "denominator": 4
+          },
+          "partner": {
+            "numerator": 5,
+            "denominator": 5
+          }
+        },
+        "returning": {
+          "oneself": {
+            "numerator": 6,
+            "denominator": 8
+          },
+          "partner": {
+            "numerator": 11,
+            "denominator": 12
+          }
+        }
+      },
+      "total_distance_covered": 880.88,
+      "average_x_coverage_percentage": 52.72,
+      "shot_count": 56,
+      "final_shot_count": 12,
+      "volley_count": 19,
+      "ground_stroke_count": 37,
+      "team_short_length_rallies_won": 35.14,
+      "team_medium_length_rallies_won": 33.33,
+      "team_long_length_rallies_won": 100,
+      "team_shot_percentage": 54.9,
+      "team_left_side_percentage": 52,
+      "average_shot_quality": 0.6,
+      "net_impact_score": 0.5,
+      "net_fault_percentage": 7.14,
+      "out_fault_percentage": 5.36,
+      "team_thirds_percentage": 83.33,
+      "team_fourths_percentage": 41.18,
+      "team_fifths_percentage": 71.43,
+      "serves": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 83.33,
+          "high_quality_shot_rally_won_percentage": 8.33,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 8.33,
+          "net_fault_percentage": 8.33,
+          "rally_won_percentage": 27.27
+        },
+        "count": 12,
+        "average_quality": 0.54,
+        "average_baseline_distance": 9.07,
+        "median_baseline_distance": 7.75,
+        "average_height_above_net": 1.77,
+        "median_height_above_net": 1.38,
+        "speed_stats": {
+          "fastest": 36.99,
+          "average": 33.2,
+          "median": 35.04
+        }
+      },
+      "returns": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 91.67,
+          "high_quality_shot_rally_won_percentage": 33.33,
+          "low_quality_shot_rally_won_percentage": 8.33,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 8.33,
+          "rally_won_percentage": 33.33
+        },
+        "count": 12,
+        "average_quality": 0.69,
+        "average_baseline_distance": 7.74,
+        "median_baseline_distance": 6.55,
+        "average_height_above_net": 2.26,
+        "median_height_above_net": 2.03,
+        "speed_stats": {
+          "fastest": 36.15,
+          "average": 29.8,
+          "median": 30.46
+        }
+      },
+      "thirds": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 90,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 10,
+          "out_fault_percentage": 10,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 40
+        },
+        "count": 10,
+        "average_quality": 0.74,
+        "average_baseline_distance": 14.24,
+        "median_baseline_distance": 15.84,
+        "average_height_above_net": 2.61,
+        "median_height_above_net": 2.64,
+        "speed_stats": {
+          "fastest": 52.7,
+          "average": 31.89,
+          "median": 36.38
+        }
+      },
+      "fourths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 85.71,
+          "high_quality_shot_rally_won_percentage": 28.57,
+          "low_quality_shot_rally_won_percentage": 14.29,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 14.29,
+          "rally_won_percentage": 33.33
+        },
+        "count": 7,
+        "average_quality": 0.62,
+        "average_baseline_distance": 11.14,
+        "median_baseline_distance": 9.92,
+        "average_height_above_net": 1.29,
+        "median_height_above_net": 0.86,
+        "speed_stats": {
+          "fastest": 33.53,
+          "average": 20.08,
+          "median": 18.25
+        }
+      },
+      "fifths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 80,
+          "high_quality_shot_rally_won_percentage": 20,
+          "low_quality_shot_rally_won_percentage": 20,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 20,
+          "rally_won_percentage": 40
+        },
+        "count": 5,
+        "average_quality": 0.52,
+        "average_baseline_distance": 16.47,
+        "median_baseline_distance": 15.46,
+        "average_height_above_net": 3.05,
+        "median_height_above_net": 3.15,
+        "speed_stats": {
+          "fastest": 33.94,
+          "average": 25.15,
+          "median": 26.62
+        }
+      },
+      "drives": {
+        "outcome_stats": {
+          "attempt_percentage": 30.36,
+          "success_percentage": 88.24,
+          "high_quality_shot_rally_won_percentage": 47.06,
+          "low_quality_shot_rally_won_percentage": 11.76,
+          "out_fault_percentage": 5.88,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 28.57
+        },
+        "count": 17,
+        "average_quality": 0.69,
+        "average_baseline_distance": 12.57,
+        "median_baseline_distance": 14.91,
+        "average_height_above_net": 2.49,
+        "median_height_above_net": 2.38,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 29.43,
+          "median": 27.16
+        }
+      },
+      "drops": {
+        "outcome_stats": {
+          "attempt_percentage": 7.14,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 25,
+          "rally_won_percentage": 25
+        },
+        "count": 4,
+        "average_quality": 0.44,
+        "average_baseline_distance": 16.96,
+        "median_baseline_distance": 15.53,
+        "average_height_above_net": 3.6,
+        "median_height_above_net": 3.2,
+        "speed_stats": {
+          "fastest": 33.94,
+          "average": 24.34,
+          "median": 22.53
+        }
+      },
+      "dinks": {
+        "outcome_stats": {
+          "attempt_percentage": 14.29,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 25,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 12.5,
+          "net_fault_percentage": 12.5,
+          "rally_won_percentage": 71.43
+        },
+        "count": 8,
+        "average_quality": 0.59,
+        "average_baseline_distance": 15.42,
+        "median_baseline_distance": 15.07,
+        "average_height_above_net": 1.73,
+        "median_height_above_net": 0.66,
+        "speed_stats": {
+          "fastest": 18.49,
+          "average": 15.92,
+          "median": 16.1
+        }
+      },
+      "lobs": {
+        "count": 0
+      },
+      "smashes": {
+        "outcome_stats": {
+          "attempt_percentage": 5.36,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 66.67,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 33.33
+        },
+        "count": 3,
+        "average_quality": 0.25,
+        "average_baseline_distance": 14.52,
+        "median_baseline_distance": 13.97,
+        "average_height_above_net": 0.28,
+        "median_height_above_net": 0,
+        "speed_stats": {
+          "fastest": 33.53,
+          "average": 21.92,
+          "median": 21.68
+        }
+      },
+      "third_drives": {
+        "outcome_stats": {
+          "attempt_percentage": 80,
+          "success_percentage": 87.5,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 12.5,
+          "out_fault_percentage": 12.5,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 25
+        },
+        "count": 8,
+        "average_quality": 0.71,
+        "average_baseline_distance": 13.29,
+        "median_baseline_distance": 15.59,
+        "average_height_above_net": 2.65,
+        "median_height_above_net": 2.64,
+        "speed_stats": {
+          "fastest": 52.7,
+          "average": 35.81,
+          "median": 37.79
+        }
+      },
+      "third_drops": {
+        "count": 0
+      },
+      "third_lobs": {
+        "count": 0
+      },
+      "resets": {
+        "outcome_stats": {
+          "attempt_percentage": 10.53,
+          "success_percentage": 0,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 100,
+          "out_fault_percentage": 50,
+          "net_fault_percentage": 50,
+          "rally_won_percentage": 0
+        },
+        "count": 2,
+        "average_quality": 0,
+        "average_baseline_distance": 17.19,
+        "median_baseline_distance": 17.19,
+        "average_height_above_net": 4.85,
+        "median_height_above_net": 4.85,
+        "speed_stats": {
+          "fastest": 14.39,
+          "average": 13.35,
+          "median": 13.35
+        }
+      },
+      "speedups": {
+        "count": 0
+      },
+      "passing": {
+        "outcome_stats": {
+          "attempt_percentage": 1.96,
+          "success_percentage": 0,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 100,
+          "out_fault_percentage": 100,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 0
+        },
+        "count": 1,
+        "average_quality": 0,
+        "average_baseline_distance": -3.65,
+        "median_baseline_distance": -3.65,
+        "average_height_above_net": 5.82,
+        "median_height_above_net": 5.82,
+        "speed_stats": {
+          "fastest": 35.3,
+          "average": 35.3,
+          "median": 35.3
+        }
+      },
+      "poaches": {
+        "outcome_stats": {
+          "attempt_percentage": 5.56,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 100,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 100
+        },
+        "count": 1,
+        "average_quality": 0.08,
+        "average_baseline_distance": 11.1,
+        "median_baseline_distance": 11.1,
+        "average_height_above_net": 0,
+        "median_height_above_net": 0,
+        "speed_stats": {
+          "fastest": 21.68,
+          "average": 21.68,
+          "median": 21.68
+        }
+      },
+      "forehands": {
+        "outcome_stats": {
+          "attempt_percentage": 67.86,
+          "success_percentage": 86.84,
+          "high_quality_shot_rally_won_percentage": 31.58,
+          "low_quality_shot_rally_won_percentage": 18.42,
+          "out_fault_percentage": 7.89,
+          "net_fault_percentage": 5.26,
+          "rally_won_percentage": 34.62
+        },
+        "count": 38,
+        "average_quality": 0.61,
+        "average_baseline_distance": 10.64,
+        "median_baseline_distance": 11.12,
+        "average_height_above_net": 2.4,
+        "median_height_above_net": 2.38,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 29.37,
+          "median": 29.92
+        }
+      },
+      "backhands": {
+        "outcome_stats": {
+          "attempt_percentage": 32.14,
+          "success_percentage": 83.33,
+          "high_quality_shot_rally_won_percentage": 16.67,
+          "low_quality_shot_rally_won_percentage": 22.22,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 11.11,
+          "rally_won_percentage": 33.33
+        },
+        "count": 18,
+        "average_quality": 0.58,
+        "average_baseline_distance": 13.65,
+        "median_baseline_distance": 13.45,
+        "average_height_above_net": 1.43,
+        "median_height_above_net": 0.89,
+        "speed_stats": {
+          "fastest": 36.15,
+          "average": 23.93,
+          "median": 23.88
+        }
+      },
+      "left_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 55.77,
+          "success_percentage": 89.66,
+          "high_quality_shot_rally_won_percentage": 27.59,
+          "low_quality_shot_rally_won_percentage": 20.69,
+          "out_fault_percentage": 6.9,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 37.5
+        },
+        "count": 29,
+        "average_quality": 0.6,
+        "average_baseline_distance": 11.89,
+        "median_baseline_distance": 14.49,
+        "average_height_above_net": 2.12,
+        "median_height_above_net": 1.75,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 29.68,
+          "median": 28.35
+        }
+      },
+      "right_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 44.23,
+          "success_percentage": 82.61,
+          "high_quality_shot_rally_won_percentage": 26.09,
+          "low_quality_shot_rally_won_percentage": 17.39,
+          "out_fault_percentage": 4.35,
+          "net_fault_percentage": 13.04,
+          "rally_won_percentage": 26.67
+        },
+        "count": 23,
+        "average_quality": 0.61,
+        "average_baseline_distance": 11.09,
+        "median_baseline_distance": 10.41,
+        "average_height_above_net": 2.16,
+        "median_height_above_net": 1.9,
+        "speed_stats": {
+          "fastest": 36.36,
+          "average": 23.73,
+          "median": 24.07
+        }
+      },
+      "kitchen_area": {
+        "outcome_stats": {
+          "attempt_percentage": 51.79,
+          "success_percentage": 96.55,
+          "high_quality_shot_rally_won_percentage": 24.14,
+          "low_quality_shot_rally_won_percentage": 13.79,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 35.29
+        },
+        "count": 29,
+        "average_quality": 0.62,
+        "average_baseline_distance": 15.15,
+        "median_baseline_distance": 15.46,
+        "average_height_above_net": 1.76,
+        "median_height_above_net": 1.3,
+        "speed_stats": {
+          "fastest": 52.7,
+          "average": 25.6,
+          "median": 25.73
+        }
+      },
+      "mid_court_area": {
+        "outcome_stats": {
+          "attempt_percentage": 23.21,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 7.69,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 41.67
+        },
+        "count": 13,
+        "average_quality": 0.72,
+        "average_baseline_distance": 7.38,
+        "median_baseline_distance": 6.83,
+        "average_height_above_net": 1.88,
+        "median_height_above_net": 1.75,
+        "speed_stats": {
+          "fastest": 36.99,
+          "average": 29.39,
+          "median": 33.19
+        }
+      },
+      "near_baseline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 10.71,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 100,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 60
+        },
+        "count": 6,
+        "average_quality": 0.9,
+        "average_baseline_distance": 3.69,
+        "median_baseline_distance": 4.54,
+        "average_height_above_net": 2.29,
+        "median_height_above_net": 2.46,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 35.46,
+          "median": 32.28
+        }
+      },
+      "near_midline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 75,
+          "success_percentage": 85.71,
+          "high_quality_shot_rally_won_percentage": 30.95,
+          "low_quality_shot_rally_won_percentage": 16.67,
+          "out_fault_percentage": 2.38,
+          "net_fault_percentage": 9.52,
+          "rally_won_percentage": 35.71
+        },
+        "count": 98,
+        "average_quality": 0.61,
+        "average_baseline_distance": 11.91,
+        "median_baseline_distance": 13.04,
+        "average_height_above_net": 2.07,
+        "median_height_above_net": 1.76,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 27.6,
+          "median": 27.45
+        }
+      },
+      "near_left_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 12.5,
+          "success_percentage": 85.71,
+          "high_quality_shot_rally_won_percentage": 28.57,
+          "low_quality_shot_rally_won_percentage": 14.29,
+          "out_fault_percentage": 14.29,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 63,
+        "average_quality": 0.6,
+        "average_baseline_distance": 11.16,
+        "median_baseline_distance": 11.14,
+        "average_height_above_net": 2.2,
+        "median_height_above_net": 1.77,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 27.84,
+          "median": 27.73
+        }
+      },
+      "near_right_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 12.5,
+          "success_percentage": 85.71,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 42.86,
+          "out_fault_percentage": 14.29,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 33.33
+        },
+        "count": 63,
+        "average_quality": 0.58,
+        "average_baseline_distance": 11.59,
+        "median_baseline_distance": 12.37,
+        "average_height_above_net": 2.11,
+        "median_height_above_net": 1.75,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 27.44,
+          "median": 27.16
+        }
+      }
+    },
+    {
+      "team": 1,
+      "ball_directions": {
+        "mid_cross_left_count": 3,
+        "mid_cross_right_count": 13,
+        "down_the_middle_count": 8,
+        "left_to_middle_count": 6,
+        "left_cross_right_count": 4,
+        "down_the_line_left_count": 3,
+        "right_to_middle_count": 4,
+        "right_cross_left_count": 5,
+        "down_the_line_right_count": 1
+      },
+      "role_stats": {
+        "receiving": {
+          "oneself": {
+            "total": 6,
+            "kitchen_arrival": 6
+          },
+          "partner": {
+            "total": 6,
+            "kitchen_arrival": 6
+          }
+        },
+        "serving": {
+          "oneself": {
+            "total": 10,
+            "kitchen_arrival": 5
+          },
+          "partner": {
+            "total": 7,
+            "kitchen_arrival": 2
+          }
+        }
+      },
+      "kitchen_arrival_percentage": {
+        "serving": {
+          "oneself": {
+            "numerator": 4,
+            "denominator": 8
+          },
+          "partner": {
+            "numerator": 2,
+            "denominator": 6
+          }
+        },
+        "returning": {
+          "oneself": {
+            "numerator": 5,
+            "denominator": 5
+          },
+          "partner": {
+            "numerator": 6,
+            "denominator": 6
+          }
+        }
+      },
+      "total_distance_covered": 661.41,
+      "average_x_coverage_percentage": 50.84,
+      "shot_count": 47,
+      "final_shot_count": 8,
+      "volley_count": 11,
+      "ground_stroke_count": 36,
+      "team_short_length_rallies_won": 54.05,
+      "team_medium_length_rallies_won": 58.33,
+      "team_long_length_rallies_won": 0,
+      "team_shot_percentage": 44.34,
+      "team_left_side_percentage": 64,
+      "average_shot_quality": 0.7,
+      "net_impact_score": 0.5,
+      "net_fault_percentage": 2.13,
+      "out_fault_percentage": 4.26,
+      "team_thirds_percentage": 33.33,
+      "team_fourths_percentage": 50,
+      "team_fifths_percentage": 18.18,
+      "serves": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 58.33
+        },
+        "count": 14,
+        "average_quality": 0.75,
+        "average_baseline_distance": 6.15,
+        "median_baseline_distance": 5.26,
+        "average_height_above_net": 1.97,
+        "median_height_above_net": 2.12,
+        "speed_stats": {
+          "fastest": 42.24,
+          "average": 34.34,
+          "median": 34.12
+        }
+      },
+      "returns": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 28.57,
+          "low_quality_shot_rally_won_percentage": 28.57,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 100
+        },
+        "count": 7,
+        "average_quality": 0.61,
+        "average_baseline_distance": 10.62,
+        "median_baseline_distance": 6.92,
+        "average_height_above_net": 1.85,
+        "median_height_above_net": 1.78,
+        "speed_stats": {
+          "fastest": 33.08,
+          "average": 26.2,
+          "median": 27.18
+        }
+      },
+      "thirds": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 87.5,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 12.5,
+          "out_fault_percentage": 12.5,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 42.86
+        },
+        "count": 8,
+        "average_quality": 0.75,
+        "average_baseline_distance": 19.16,
+        "median_baseline_distance": 17.59,
+        "average_height_above_net": 1.35,
+        "median_height_above_net": 1.35,
+        "speed_stats": {
+          "fastest": 36.12,
+          "average": 24.53,
+          "median": 24.54
+        }
+      },
+      "fourths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 25
+        },
+        "count": 4,
+        "average_quality": 0.65,
+        "average_baseline_distance": 5.7,
+        "median_baseline_distance": 7.87,
+        "average_height_above_net": 2.35,
+        "median_height_above_net": 2.44,
+        "speed_stats": {
+          "fastest": 25.78,
+          "average": 18.95,
+          "median": 20.51
+        }
+      },
+      "fifths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 0
+        },
+        "count": 2,
+        "average_quality": 0.7,
+        "average_baseline_distance": 14.88,
+        "median_baseline_distance": 14.88,
+        "average_height_above_net": 2.6,
+        "median_height_above_net": 2.6,
+        "speed_stats": {
+          "fastest": 23.34,
+          "average": 15.81,
+          "median": 15.81
+        }
+      },
+      "drives": {
+        "outcome_stats": {
+          "attempt_percentage": 31.91,
+          "success_percentage": 93.33,
+          "high_quality_shot_rally_won_percentage": 53.33,
+          "low_quality_shot_rally_won_percentage": 6.67,
+          "out_fault_percentage": 6.67,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 15,
+        "average_quality": 0.72,
+        "average_baseline_distance": 9,
+        "median_baseline_distance": 10.81,
+        "average_height_above_net": 1.99,
+        "median_height_above_net": 1.56,
+        "speed_stats": {
+          "fastest": 47.18,
+          "average": 24.42,
+          "median": 23.34
+        }
+      },
+      "drops": {
+        "outcome_stats": {
+          "attempt_percentage": 10.64,
+          "success_percentage": 80,
+          "high_quality_shot_rally_won_percentage": 60,
+          "low_quality_shot_rally_won_percentage": 20,
+          "out_fault_percentage": 20,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 5,
+        "average_quality": 0.75,
+        "average_baseline_distance": 21.45,
+        "median_baseline_distance": 18.05,
+        "average_height_above_net": 0.46,
+        "median_height_above_net": 0.33,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 27.71,
+          "median": 21.69
+        }
+      },
+      "dinks": {
+        "outcome_stats": {
+          "attempt_percentage": 8.51,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 25,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 25,
+          "rally_won_percentage": 33.33
+        },
+        "count": 4,
+        "average_quality": 0.55,
+        "average_baseline_distance": 16.23,
+        "median_baseline_distance": 16.23,
+        "average_height_above_net": 1.5,
+        "median_height_above_net": 1.58,
+        "speed_stats": {
+          "fastest": 26.98,
+          "average": 19.18,
+          "median": 18.05
+        }
+      },
+      "lobs": {
+        "count": 0
+      },
+      "smashes": {
+        "outcome_stats": {
+          "attempt_percentage": 4.26,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 50,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 2,
+        "average_quality": 0.64,
+        "average_baseline_distance": 12.14,
+        "median_baseline_distance": 12.14,
+        "average_height_above_net": 1.98,
+        "median_height_above_net": 1.98,
+        "speed_stats": {
+          "fastest": 39.76,
+          "average": 32.77,
+          "median": 32.77
+        }
+      },
+      "third_drives": {
+        "outcome_stats": {
+          "attempt_percentage": 50,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 4,
+        "average_quality": 0.82,
+        "average_baseline_distance": 15.92,
+        "median_baseline_distance": 16.35,
+        "average_height_above_net": 1.91,
+        "median_height_above_net": 1.93,
+        "speed_stats": {
+          "fastest": 36.12,
+          "average": 29.43,
+          "median": 29.77
+        }
+      },
+      "third_drops": {
+        "outcome_stats": {
+          "attempt_percentage": 50,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 25,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 33.33
+        },
+        "count": 4,
+        "average_quality": 0.68,
+        "average_baseline_distance": 22.41,
+        "median_baseline_distance": 18.2,
+        "average_height_above_net": 0.61,
+        "median_height_above_net": 0.67,
+        "speed_stats": {
+          "fastest": 29.19,
+          "average": 19.63,
+          "median": 21.12
+        }
+      },
+      "third_lobs": {
+        "count": 0
+      },
+      "resets": {
+        "outcome_stats": {
+          "attempt_percentage": 9.09,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 0
+        },
+        "count": 1,
+        "average_quality": 0.59,
+        "average_baseline_distance": 17.88,
+        "median_baseline_distance": 17.88,
+        "average_height_above_net": 3.15,
+        "median_height_above_net": 3.15,
+        "speed_stats": {
+          "fastest": 8.27,
+          "average": 8.27,
+          "median": 8.27
+        }
+      },
+      "speedups": {
+        "outcome_stats": {
+          "attempt_percentage": 27.27,
+          "success_percentage": 66.67,
+          "high_quality_shot_rally_won_percentage": 33.33,
+          "low_quality_shot_rally_won_percentage": 33.33,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 33.33,
+          "rally_won_percentage": 66.67
+        },
+        "count": 3,
+        "average_quality": 0.47,
+        "average_baseline_distance": 15.98,
+        "median_baseline_distance": 16.34,
+        "average_height_above_net": 2.93,
+        "median_height_above_net": 2.93,
+        "speed_stats": {
+          "fastest": 39.76,
+          "average": 30.34,
+          "median": 26.98
+        }
+      },
+      "passing": {
+        "outcome_stats": {
+          "attempt_percentage": 4.44,
+          "success_percentage": 50,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 50,
+          "out_fault_percentage": 50,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 2,
+        "average_quality": 0.21,
+        "average_baseline_distance": 2.89,
+        "median_baseline_distance": 2.89,
+        "average_height_above_net": 3.34,
+        "median_height_above_net": 3.34,
+        "speed_stats": {
+          "fastest": 28.72,
+          "average": 26.49,
+          "median": 26.49
+        }
+      },
+      "poaches": {
+        "count": 0
+      },
+      "forehands": {
+        "outcome_stats": {
+          "attempt_percentage": 68.09,
+          "success_percentage": 90.62,
+          "high_quality_shot_rally_won_percentage": 46.88,
+          "low_quality_shot_rally_won_percentage": 15.62,
+          "out_fault_percentage": 6.25,
+          "net_fault_percentage": 3.12,
+          "rally_won_percentage": 57.89
+        },
+        "count": 32,
+        "average_quality": 0.67,
+        "average_baseline_distance": 9.7,
+        "median_baseline_distance": 8.96,
+        "average_height_above_net": 1.83,
+        "median_height_above_net": 1.41,
+        "speed_stats": {
+          "fastest": 47.18,
+          "average": 28.35,
+          "median": 28.36
+        }
+      },
+      "backhands": {
+        "outcome_stats": {
+          "attempt_percentage": 31.91,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 46.67,
+          "low_quality_shot_rally_won_percentage": 6.67,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 72.73
+        },
+        "count": 15,
+        "average_quality": 0.76,
+        "average_baseline_distance": 12.09,
+        "median_baseline_distance": 12.28,
+        "average_height_above_net": 1.71,
+        "median_height_above_net": 2.05,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 26.92,
+          "median": 25.44
+        }
+      },
+      "left_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 76.6,
+          "success_percentage": 94.44,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 13.89,
+          "out_fault_percentage": 2.78,
+          "net_fault_percentage": 2.78,
+          "rally_won_percentage": 68.75
+        },
+        "count": 36,
+        "average_quality": 0.7,
+        "average_baseline_distance": 10.57,
+        "median_baseline_distance": 10.68,
+        "average_height_above_net": 1.66,
+        "median_height_above_net": 1.38,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 27.67,
+          "median": 27.08
+        }
+      },
+      "right_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 23.4,
+          "success_percentage": 90.91,
+          "high_quality_shot_rally_won_percentage": 36.36,
+          "low_quality_shot_rally_won_percentage": 9.09,
+          "out_fault_percentage": 9.09,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 11,
+        "average_quality": 0.71,
+        "average_baseline_distance": 10.14,
+        "median_baseline_distance": 8.05,
+        "average_height_above_net": 2.23,
+        "median_height_above_net": 2.16,
+        "speed_stats": {
+          "fastest": 42.24,
+          "average": 28.64,
+          "median": 31.61
+        }
+      },
+      "kitchen_area": {
+        "outcome_stats": {
+          "attempt_percentage": 44.68,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 47.62,
+          "low_quality_shot_rally_won_percentage": 9.52,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 66.67
+        },
+        "count": 21,
+        "average_quality": 0.73,
+        "average_baseline_distance": 15.37,
+        "median_baseline_distance": 15.57,
+        "average_height_above_net": 1.11,
+        "median_height_above_net": 0.9,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 26.32,
+          "median": 23.34
+        }
+      },
+      "mid_court_area": {
+        "outcome_stats": {
+          "attempt_percentage": 23.4,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 9.09,
+          "low_quality_shot_rally_won_percentage": 9.09,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 60
+        },
+        "count": 11,
+        "average_quality": 0.64,
+        "average_baseline_distance": 8.06,
+        "median_baseline_distance": 8.05,
+        "average_height_above_net": 2.24,
+        "median_height_above_net": 1.84,
+        "speed_stats": {
+          "fastest": 37.66,
+          "average": 27.32,
+          "median": 27.18
+        }
+      },
+      "near_baseline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 25.53,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 91.67,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 72.73
+        },
+        "count": 12,
+        "average_quality": 0.88,
+        "average_baseline_distance": 1.91,
+        "median_baseline_distance": 2.95,
+        "average_height_above_net": 2.57,
+        "median_height_above_net": 2.53,
+        "speed_stats": {
+          "fastest": 47.18,
+          "average": 32.93,
+          "median": 31.65
+        }
+      },
+      "near_midline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 68.09,
+          "success_percentage": 96.88,
+          "high_quality_shot_rally_won_percentage": 46.88,
+          "low_quality_shot_rally_won_percentage": 9.38,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 3.12,
+          "rally_won_percentage": 61.11
+        },
+        "count": 79,
+        "average_quality": 0.71,
+        "average_baseline_distance": 10.41,
+        "median_baseline_distance": 9.66,
+        "average_height_above_net": 1.81,
+        "median_height_above_net": 1.56,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 26.62,
+          "median": 26.98
+        }
+      },
+      "near_left_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 14.89,
+          "success_percentage": 85.71,
+          "high_quality_shot_rally_won_percentage": 57.14,
+          "low_quality_shot_rally_won_percentage": 28.57,
+          "out_fault_percentage": 14.29,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 50
+        },
+        "count": 54,
+        "average_quality": 0.69,
+        "average_baseline_distance": 10.2,
+        "median_baseline_distance": 9.63,
+        "average_height_above_net": 1.8,
+        "median_height_above_net": 1.57,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 28.84,
+          "median": 28.72
+        }
+      },
+      "near_right_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 17.02,
+          "success_percentage": 87.5,
+          "high_quality_shot_rally_won_percentage": 37.5,
+          "low_quality_shot_rally_won_percentage": 12.5,
+          "out_fault_percentage": 12.5,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 57.14
+        },
+        "count": 55,
+        "average_quality": 0.7,
+        "average_baseline_distance": 10.81,
+        "median_baseline_distance": 9.66,
+        "average_height_above_net": 1.75,
+        "median_height_above_net": 1.58,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 28.8,
+          "median": 28.72
+        }
+      }
+    },
+    {
+      "team": 1,
+      "ball_directions": {
+        "mid_cross_left_count": 6,
+        "mid_cross_right_count": 7,
+        "down_the_middle_count": 15,
+        "left_to_middle_count": 1,
+        "left_cross_right_count": 2,
+        "down_the_line_left_count": 5,
+        "right_to_middle_count": 7,
+        "right_cross_left_count": 10,
+        "down_the_line_right_count": 6
+      },
+      "role_stats": {
+        "receiving": {
+          "oneself": {
+            "total": 6,
+            "kitchen_arrival": 6
+          },
+          "partner": {
+            "total": 6,
+            "kitchen_arrival": 6
+          }
+        },
+        "serving": {
+          "oneself": {
+            "total": 7,
+            "kitchen_arrival": 2
+          },
+          "partner": {
+            "total": 10,
+            "kitchen_arrival": 6
+          }
+        }
+      },
+      "kitchen_arrival_percentage": {
+        "serving": {
+          "oneself": {
+            "numerator": 2,
+            "denominator": 6
+          },
+          "partner": {
+            "numerator": 4,
+            "denominator": 8
+          }
+        },
+        "returning": {
+          "oneself": {
+            "numerator": 6,
+            "denominator": 6
+          },
+          "partner": {
+            "numerator": 5,
+            "denominator": 5
+          }
+        }
+      },
+      "total_distance_covered": 592.91,
+      "average_x_coverage_percentage": 50.3,
+      "shot_count": 59,
+      "final_shot_count": 16,
+      "volley_count": 12,
+      "ground_stroke_count": 47,
+      "team_short_length_rallies_won": 54.05,
+      "team_medium_length_rallies_won": 58.33,
+      "team_long_length_rallies_won": 0,
+      "team_shot_percentage": 55.66,
+      "team_left_side_percentage": 34,
+      "average_shot_quality": 0.64,
+      "net_impact_score": 0.5,
+      "net_fault_percentage": 8.47,
+      "out_fault_percentage": 8.47,
+      "team_thirds_percentage": 66.67,
+      "team_fourths_percentage": 50,
+      "team_fifths_percentage": 81.82,
+      "serves": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 87.5,
+          "high_quality_shot_rally_won_percentage": 43.75,
+          "low_quality_shot_rally_won_percentage": 12.5,
+          "out_fault_percentage": 6.25,
+          "net_fault_percentage": 6.25,
+          "rally_won_percentage": 57.14
+        },
+        "count": 16,
+        "average_quality": 0.67,
+        "average_baseline_distance": 6.87,
+        "median_baseline_distance": 6.56,
+        "average_height_above_net": 1.22,
+        "median_height_above_net": 1.36,
+        "speed_stats": {
+          "fastest": 45.2,
+          "average": 35.81,
+          "median": 36.51
+        }
+      },
+      "returns": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 70,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 10,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 10,
+          "rally_won_percentage": 22.22
+        },
+        "count": 10,
+        "average_quality": 0.71,
+        "average_baseline_distance": 5.86,
+        "median_baseline_distance": 4,
+        "average_height_above_net": 1.94,
+        "median_height_above_net": 1.24,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 27.36,
+          "median": 24.42
+        }
+      },
+      "thirds": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 43.75,
+          "low_quality_shot_rally_won_percentage": 31.25,
+          "out_fault_percentage": 12.5,
+          "net_fault_percentage": 18.75,
+          "rally_won_percentage": 57.14
+        },
+        "count": 16,
+        "average_quality": 0.58,
+        "average_baseline_distance": 14.63,
+        "median_baseline_distance": 14.93,
+        "average_height_above_net": 2.07,
+        "median_height_above_net": 1.79,
+        "speed_stats": {
+          "fastest": 47.12,
+          "average": 30.79,
+          "median": 29.59
+        }
+      },
+      "fourths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 25,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 100
+        },
+        "count": 4,
+        "average_quality": 0.58,
+        "average_baseline_distance": 8.46,
+        "median_baseline_distance": 8.52,
+        "average_height_above_net": 1.42,
+        "median_height_above_net": 1.29,
+        "speed_stats": {
+          "fastest": 32.12,
+          "average": 20.61,
+          "median": 18.99
+        }
+      },
+      "fifths": {
+        "outcome_stats": {
+          "attempt_percentage": 100,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 33.33,
+          "low_quality_shot_rally_won_percentage": 22.22,
+          "out_fault_percentage": 11.11,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 87.5
+        },
+        "count": 9,
+        "average_quality": 0.7,
+        "average_baseline_distance": 14.62,
+        "median_baseline_distance": 16.28,
+        "average_height_above_net": 2.47,
+        "median_height_above_net": 1.92,
+        "speed_stats": {
+          "fastest": 59.1,
+          "average": 29.66,
+          "median": 24.65
+        }
+      },
+      "drives": {
+        "outcome_stats": {
+          "attempt_percentage": 38.98,
+          "success_percentage": 91.3,
+          "high_quality_shot_rally_won_percentage": 47.83,
+          "low_quality_shot_rally_won_percentage": 21.74,
+          "out_fault_percentage": 13.04,
+          "net_fault_percentage": 4.35,
+          "rally_won_percentage": 68.75
+        },
+        "count": 23,
+        "average_quality": 0.68,
+        "average_baseline_distance": 13.2,
+        "median_baseline_distance": 14.13,
+        "average_height_above_net": 2.13,
+        "median_height_above_net": 1.63,
+        "speed_stats": {
+          "fastest": 59.1,
+          "average": 29.43,
+          "median": 25.82
+        }
+      },
+      "drops": {
+        "outcome_stats": {
+          "attempt_percentage": 10.17,
+          "success_percentage": 83.33,
+          "high_quality_shot_rally_won_percentage": 16.67,
+          "low_quality_shot_rally_won_percentage": 16.67,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 16.67,
+          "rally_won_percentage": 40
+        },
+        "count": 6,
+        "average_quality": 0.63,
+        "average_baseline_distance": 17,
+        "median_baseline_distance": 16.39,
+        "average_height_above_net": 1.86,
+        "median_height_above_net": 1.92,
+        "speed_stats": {
+          "fastest": 27.07,
+          "average": 22.23,
+          "median": 22.98
+        }
+      },
+      "dinks": {
+        "outcome_stats": {
+          "attempt_percentage": 1.69,
+          "success_percentage": 0,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 100,
+          "out_fault_percentage": 100,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 0
+        },
+        "count": 1,
+        "average_quality": 0,
+        "average_baseline_distance": 18.45,
+        "median_baseline_distance": 18.45,
+        "average_height_above_net": 0,
+        "median_height_above_net": 0,
+        "speed_stats": {
+          "fastest": 14.73,
+          "average": 14.73,
+          "median": 14.73
+        }
+      },
+      "lobs": {
+        "count": 0
+      },
+      "smashes": {
+        "outcome_stats": {
+          "attempt_percentage": 5.08,
+          "success_percentage": 66.67,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 66.67,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 33.33,
+          "rally_won_percentage": 66.67
+        },
+        "count": 3,
+        "average_quality": 0.26,
+        "average_baseline_distance": 13.01,
+        "median_baseline_distance": 9.34,
+        "average_height_above_net": 1.08,
+        "median_height_above_net": 1.08,
+        "speed_stats": {
+          "fastest": 32.12,
+          "average": 29.11,
+          "median": 31.68
+        }
+      },
+      "third_drives": {
+        "outcome_stats": {
+          "attempt_percentage": 68.75,
+          "success_percentage": 81.82,
+          "high_quality_shot_rally_won_percentage": 54.55,
+          "low_quality_shot_rally_won_percentage": 27.27,
+          "out_fault_percentage": 18.18,
+          "net_fault_percentage": 9.09,
+          "rally_won_percentage": 66.67
+        },
+        "count": 11,
+        "average_quality": 0.63,
+        "average_baseline_distance": 12.98,
+        "median_baseline_distance": 13.97,
+        "average_height_above_net": 2.05,
+        "median_height_above_net": 1.39,
+        "speed_stats": {
+          "fastest": 47.12,
+          "average": 33.6,
+          "median": 36.08
+        }
+      },
+      "third_drops": {
+        "outcome_stats": {
+          "attempt_percentage": 25,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 25,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 25,
+          "rally_won_percentage": 50
+        },
+        "count": 4,
+        "average_quality": 0.57,
+        "average_baseline_distance": 17.3,
+        "median_baseline_distance": 16.64,
+        "average_height_above_net": 2.17,
+        "median_height_above_net": 1.94,
+        "speed_stats": {
+          "fastest": 27.07,
+          "average": 22.84,
+          "median": 22.98
+        }
+      },
+      "third_lobs": {
+        "count": 0
+      },
+      "resets": {
+        "count": 0
+      },
+      "speedups": {
+        "outcome_stats": {
+          "attempt_percentage": 14.29,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 100
+        },
+        "count": 1,
+        "average_quality": 0.74,
+        "average_baseline_distance": 20.73,
+        "median_baseline_distance": 20.73,
+        "average_height_above_net": 2.17,
+        "median_height_above_net": 2.17,
+        "speed_stats": {
+          "fastest": 23.09,
+          "average": 23.09,
+          "median": 23.09
+        }
+      },
+      "passing": {
+        "outcome_stats": {
+          "attempt_percentage": 6.9,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 0,
+          "low_quality_shot_rally_won_percentage": 100,
+          "out_fault_percentage": 75,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 75
+        },
+        "count": 4,
+        "average_quality": 0.1,
+        "average_baseline_distance": 7.57,
+        "median_baseline_distance": 8.14,
+        "average_height_above_net": 4.77,
+        "median_height_above_net": 6.29,
+        "speed_stats": {
+          "fastest": 27.88,
+          "average": 23.28,
+          "median": 22.27
+        }
+      },
+      "poaches": {
+        "outcome_stats": {
+          "attempt_percentage": 16.67,
+          "success_percentage": 50,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 50,
+          "out_fault_percentage": 50,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 0
+        },
+        "count": 2,
+        "average_quality": 0.45,
+        "average_baseline_distance": 12.47,
+        "median_baseline_distance": 12.47,
+        "average_height_above_net": 0,
+        "median_height_above_net": 0,
+        "speed_stats": {
+          "fastest": 25.57,
+          "average": 20.15,
+          "median": 20.15
+        }
+      },
+      "forehands": {
+        "outcome_stats": {
+          "attempt_percentage": 62.07,
+          "success_percentage": 80.56,
+          "high_quality_shot_rally_won_percentage": 50,
+          "low_quality_shot_rally_won_percentage": 19.44,
+          "out_fault_percentage": 8.33,
+          "net_fault_percentage": 8.33,
+          "rally_won_percentage": 54.17
+        },
+        "count": 36,
+        "average_quality": 0.68,
+        "average_baseline_distance": 10.52,
+        "median_baseline_distance": 12.7,
+        "average_height_above_net": 1.9,
+        "median_height_above_net": 1.42,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 31.35,
+          "median": 32.03
+        }
+      },
+      "backhands": {
+        "outcome_stats": {
+          "attempt_percentage": 37.93,
+          "success_percentage": 86.36,
+          "high_quality_shot_rally_won_percentage": 27.27,
+          "low_quality_shot_rally_won_percentage": 22.73,
+          "out_fault_percentage": 9.09,
+          "net_fault_percentage": 9.09,
+          "rally_won_percentage": 66.67
+        },
+        "count": 22,
+        "average_quality": 0.58,
+        "average_baseline_distance": 11.16,
+        "median_baseline_distance": 9.98,
+        "average_height_above_net": 1.45,
+        "median_height_above_net": 1.03,
+        "speed_stats": {
+          "fastest": 37.99,
+          "average": 27.61,
+          "median": 25.7
+        }
+      },
+      "left_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 44.83,
+          "success_percentage": 76.92,
+          "high_quality_shot_rally_won_percentage": 34.62,
+          "low_quality_shot_rally_won_percentage": 26.92,
+          "out_fault_percentage": 11.54,
+          "net_fault_percentage": 11.54,
+          "rally_won_percentage": 53.33
+        },
+        "count": 26,
+        "average_quality": 0.59,
+        "average_baseline_distance": 11.84,
+        "median_baseline_distance": 12.89,
+        "average_height_above_net": 2.08,
+        "median_height_above_net": 1.8,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 31.16,
+          "median": 31.49
+        }
+      },
+      "right_side_player": {
+        "outcome_stats": {
+          "attempt_percentage": 55.17,
+          "success_percentage": 87.5,
+          "high_quality_shot_rally_won_percentage": 46.88,
+          "low_quality_shot_rally_won_percentage": 15.62,
+          "out_fault_percentage": 6.25,
+          "net_fault_percentage": 6.25,
+          "rally_won_percentage": 55
+        },
+        "count": 32,
+        "average_quality": 0.68,
+        "average_baseline_distance": 9.89,
+        "median_baseline_distance": 9.98,
+        "average_height_above_net": 1.45,
+        "median_height_above_net": 1.08,
+        "speed_stats": {
+          "fastest": 47.12,
+          "average": 28.93,
+          "median": 28.13
+        }
+      },
+      "kitchen_area": {
+        "outcome_stats": {
+          "attempt_percentage": 45.76,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 33.33,
+          "low_quality_shot_rally_won_percentage": 11.11,
+          "out_fault_percentage": 7.41,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 56.25
+        },
+        "count": 27,
+        "average_quality": 0.69,
+        "average_baseline_distance": 14.21,
+        "median_baseline_distance": 14.3,
+        "average_height_above_net": 1.78,
+        "median_height_above_net": 1.12,
+        "speed_stats": {
+          "fastest": 59.1,
+          "average": 28.44,
+          "median": 24.79
+        }
+      },
+      "mid_court_area": {
+        "outcome_stats": {
+          "attempt_percentage": 20.34,
+          "success_percentage": 100,
+          "high_quality_shot_rally_won_percentage": 25,
+          "low_quality_shot_rally_won_percentage": 8.33,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 66.67
+        },
+        "count": 12,
+        "average_quality": 0.7,
+        "average_baseline_distance": 8.09,
+        "median_baseline_distance": 7.54,
+        "average_height_above_net": 1.07,
+        "median_height_above_net": 0.97,
+        "speed_stats": {
+          "fastest": 38.48,
+          "average": 29.59,
+          "median": 33.94
+        }
+      },
+      "near_baseline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 18.64,
+          "success_percentage": 90.91,
+          "high_quality_shot_rally_won_percentage": 100,
+          "low_quality_shot_rally_won_percentage": 0,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 70
+        },
+        "count": 11,
+        "average_quality": 0.91,
+        "average_baseline_distance": 1.49,
+        "median_baseline_distance": 1.18,
+        "average_height_above_net": 1.78,
+        "median_height_above_net": 1.71,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 36.82,
+          "median": 36.66
+        }
+      },
+      "near_midline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 61.02,
+          "success_percentage": 86.11,
+          "high_quality_shot_rally_won_percentage": 47.22,
+          "low_quality_shot_rally_won_percentage": 16.67,
+          "out_fault_percentage": 0,
+          "net_fault_percentage": 11.11,
+          "rally_won_percentage": 48
+        },
+        "count": 95,
+        "average_quality": 0.66,
+        "average_baseline_distance": 11.18,
+        "median_baseline_distance": 10.86,
+        "average_height_above_net": 1.69,
+        "median_height_above_net": 1.24,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 29.62,
+          "median": 28.18
+        }
+      },
+      "near_left_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 18.64,
+          "success_percentage": 81.82,
+          "high_quality_shot_rally_won_percentage": 27.27,
+          "low_quality_shot_rally_won_percentage": 27.27,
+          "out_fault_percentage": 27.27,
+          "net_fault_percentage": 0,
+          "rally_won_percentage": 60
+        },
+        "count": 70,
+        "average_quality": 0.62,
+        "average_baseline_distance": 9.99,
+        "median_baseline_distance": 9.98,
+        "average_height_above_net": 1.89,
+        "median_height_above_net": 1.46,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 30.13,
+          "median": 29.11
+        }
+      },
+      "near_right_sideline_area": {
+        "outcome_stats": {
+          "attempt_percentage": 20.34,
+          "success_percentage": 75,
+          "high_quality_shot_rally_won_percentage": 33.33,
+          "low_quality_shot_rally_won_percentage": 25,
+          "out_fault_percentage": 16.67,
+          "net_fault_percentage": 8.33,
+          "rally_won_percentage": 81.82
+        },
+        "count": 71,
+        "average_quality": 0.64,
+        "average_baseline_distance": 10.77,
+        "median_baseline_distance": 10.32,
+        "average_height_above_net": 1.67,
+        "median_height_above_net": 1.24,
+        "speed_stats": {
+          "fastest": 60,
+          "average": 29.76,
+          "median": 29.83
+        }
+      }
+    }
+  ]
+}

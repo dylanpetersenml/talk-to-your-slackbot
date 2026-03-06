@@ -1,0 +1,548 @@
+semantic_model:
+
+  name: pickleball_stats
+  schema_version: 2.2.0
+
+  description: >
+    Production semantic layer for pickleball stats.json datasets.
+    Aligned with stats 2.2.0 schema.
+    Optimized for PandasAI and LLM querying.
+
+
+#################################################
+# ENTITIES
+#################################################
+
+entities:
+
+
+  game:
+
+    primary_key: game_id
+
+    description: Game level statistics
+
+
+    dimensions:
+
+      game_id:
+        type: string
+        source: session.vid
+
+      session_type:
+        type: string
+        source: session.session_type
+
+      num_players:
+        type: integer
+        source: session.num_players
+
+      scoring:
+        type: string
+        source: game.scoring
+
+      min_points:
+        type: integer
+        source: game.min_points
+
+
+    measures:
+
+      avg_shots:
+        type: number
+        source: game.avg_shots
+
+      kitchen_rallies:
+        type: integer
+        source: game.kitchen_rallies
+
+      longest_rally_shots:
+        type: integer
+        source: game.longest_rally.num_shots
+
+      longest_rally_index:
+        type: integer
+        source: game.longest_rally.rally_idx
+
+      team0_outcome:
+        type: flexible
+        source: game.game_outcome[0]
+
+      team1_outcome:
+        type: flexible
+        source: game.game_outcome[1]
+
+      team0_kitchen_pct:
+        type: percentage
+        source: game.team_percentage_to_kitchen[0]
+
+      team1_kitchen_pct:
+        type: percentage
+        source: game.team_percentage_to_kitchen[1]
+
+
+
+  players:
+
+    primary_key: player_id
+
+    description: Player aggregated statistics
+
+
+    dimensions:
+
+      player_id:
+        type: integer
+
+      game_id:
+        type: string
+
+      team:
+        type: integer
+        source: players[].team
+
+
+    measures:
+
+      shot_count:
+        type: integer
+        source: players[].shot_count
+
+      final_shot_count:
+        type: integer
+        source: players[].final_shot_count
+
+      volley_count:
+        type: integer
+        source: players[].volley_count
+
+      ground_stroke_count:
+        type: integer
+        source: players[].ground_stroke_count
+
+      avg_shot_quality:
+        type: number
+        source: players[].average_shot_quality
+
+      net_impact_score:
+        type: number
+        source: players[].net_impact_score
+
+      net_fault_pct:
+        type: percentage
+        source: players[].net_fault_percentage
+
+      out_fault_pct:
+        type: percentage
+        source: players[].out_fault_percentage
+
+
+
+  shot_stats:
+
+    description: Shot type statistics
+
+
+    dimensions:
+
+      game_id:
+        type: string
+
+      player_id:
+        type: integer
+
+      shot_type:
+        type: string
+
+
+    measures:
+
+      count:
+        type: integer
+
+      avg_quality:
+        type: number
+
+      avg_speed:
+        type: number
+
+      fastest_speed:
+        type: number
+
+      success_pct:
+        type: percentage
+
+      rally_win_pct:
+        type: percentage
+
+      out_fault_pct:
+        type: percentage
+
+      net_fault_pct:
+        type: percentage
+
+
+
+
+  kitchen_arrival:
+
+    description: Kitchen arrival opportunities
+
+
+    dimensions:
+
+      game_id:
+        type: string
+
+      player_id:
+        type: integer
+
+      role:
+        type: string
+
+
+    measures:
+
+      numerator:
+        type: integer
+
+      denominator:
+        type: integer
+
+
+
+
+  ball_directions:
+
+    description: Shot direction counts
+
+
+    dimensions:
+
+      game_id:
+        type: string
+
+      player_id:
+        type: integer
+
+      direction:
+        type: string
+
+
+    measures:
+
+      count:
+        type: integer
+
+
+
+#################################################
+# RELATIONSHIPS
+#################################################
+
+relationships:
+
+
+  game_players:
+
+    from_entity: game
+    to_entity: players
+
+    join_type: one_to_many
+
+    condition: |
+
+      game.game_id = players.game_id
+
+
+
+  players_shots:
+
+    from_entity: players
+    to_entity: shot_stats
+
+    join_type: one_to_many
+
+    condition: |
+
+      players.player_id = shot_stats.player_id
+      AND players.game_id = shot_stats.game_id
+
+
+
+  players_kitchen:
+
+    from_entity: players
+    to_entity: kitchen_arrival
+
+    join_type: one_to_many
+
+    condition: |
+
+      players.player_id = kitchen_arrival.player_id
+      AND players.game_id = kitchen_arrival.game_id
+
+
+
+  players_directions:
+
+    from_entity: players
+    to_entity: ball_directions
+
+    join_type: one_to_many
+
+    condition: |
+
+      players.player_id = ball_directions.player_id
+      AND players.game_id = ball_directions.game_id
+
+
+
+#################################################
+# DERIVED MEASURES
+#################################################
+
+derived_measures:
+
+
+  shot_share:
+
+    description: Player share of shots
+
+    formula: |
+
+      shot_count / SUM(shot_count)
+
+
+
+  net_play_rate:
+
+    description: Volley rate
+
+    formula: |
+
+      volley_count / shot_count
+
+
+
+  groundstroke_rate:
+
+    description: Groundstroke rate
+
+    formula: |
+
+      ground_stroke_count / shot_count
+
+
+
+  drive_rate:
+
+    description: Drive frequency
+
+    formula: |
+
+      drives.count / shot_count
+
+
+
+  drop_rate:
+
+    description: Drop frequency
+
+    formula: |
+
+      drops.count / shot_count
+
+
+
+  dink_rate:
+
+    description: Dink frequency
+
+    formula: |
+
+      dinks.count / shot_count
+
+
+
+  kitchen_arrival_pct:
+
+    description: Kitchen arrival success rate
+
+    formula: |
+
+      numerator / denominator
+
+
+
+#################################################
+# GOLDEN QUERIES
+#################################################
+
+golden_queries:
+
+
+
+  - name: player_summary
+
+    description: >
+      Basic player performance summary.
+
+    query: |
+
+      SELECT
+        player_id,
+        team,
+        shot_count,
+        avg_shot_quality,
+        net_impact_score
+      FROM players
+      ORDER BY shot_count DESC
+
+
+
+
+  - name: drive_success_rate
+
+    description: >
+      Drive success percentage by player.
+
+    query: |
+
+      SELECT
+        player_id,
+        success_pct
+      FROM shot_stats
+      WHERE shot_type = 'drives'
+      ORDER BY success_pct DESC
+
+
+
+
+  - name: drop_success_rate
+
+    description: >
+      Drop success percentage by player.
+
+    query: |
+
+      SELECT
+        player_id,
+        success_pct
+      FROM shot_stats
+      WHERE shot_type = 'drops'
+      ORDER BY success_pct DESC
+
+
+
+
+  - name: fastest_shot
+
+    description: >
+      Fastest shot per player.
+
+    query: |
+
+      SELECT
+        player_id,
+        MAX(fastest_speed) AS fastest_speed
+      FROM shot_stats
+      GROUP BY player_id
+      ORDER BY fastest_speed DESC
+
+
+
+
+  - name: kitchen_arrival
+
+    description: >
+      Kitchen arrival success percentage.
+
+    query: |
+
+      SELECT
+        player_id,
+        numerator/denominator AS kitchen_pct
+      FROM kitchen_arrival
+      ORDER BY kitchen_pct DESC
+
+
+
+
+  - name: shot_distribution
+
+    description: >
+      Shot counts by player and type.
+
+    query: |
+
+      SELECT
+        player_id,
+        shot_type,
+        count
+      FROM shot_stats
+      ORDER BY player_id
+
+
+
+
+  - name: team_shot_volume
+
+    description: >
+      Total shots by team.
+
+    query: |
+
+      SELECT
+        team,
+        SUM(shot_count) AS total_shots
+      FROM players
+      GROUP BY team
+
+
+
+
+  - name: net_fault_rate
+
+    description: >
+      Net fault percentage per player.
+
+    query: |
+
+      SELECT
+        player_id,
+        net_fault_pct
+      FROM players
+      ORDER BY net_fault_pct ASC
+
+
+
+
+  - name: longest_rally
+
+    description: >
+      Longest rally in the game.
+
+    query: |
+
+      SELECT
+        game_id,
+        longest_rally_shots
+      FROM game
+
+
+
+
+  - name: ball_direction_distribution
+
+    description: >
+      Shot direction distribution per player.
+
+    query: |
+
+      SELECT
+        player_id,
+        direction,
+        count
+      FROM ball_directions
+      ORDER BY player_id
