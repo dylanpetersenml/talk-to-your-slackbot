@@ -8,6 +8,7 @@ message and ensures accuracy and safety before delivery.
 from .models import FormatterInput, FormattedOutput, OutputRejection
 from .formatter import format_for_slack
 from .guardrails import apply_output_guardrails
+from .slack_sender import SendResult, send_output_to_slack, send_to_slack
 
 
 def process_output(input_data: FormatterInput) -> FormattedOutput | OutputRejection:
@@ -32,6 +33,9 @@ __all__ = [
     "process_output",
     "format_for_slack",
     "apply_output_guardrails",
+    "send_to_slack",
+    "send_output_to_slack",
+    "SendResult",
     "FormatterInput",
     "FormattedOutput",
     "OutputRejection",

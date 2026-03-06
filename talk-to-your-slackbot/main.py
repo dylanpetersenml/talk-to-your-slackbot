@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
 from intake import IntakeRejection, RawSlackInput, process
 from engine import LoadError, load_stats, plan, reason
-from output import FormatterInput, OutputRejection, process_output
+from output import FormatterInput, OutputRejection, process_output, send_output_to_slack
 
 
 def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
@@ -77,8 +77,19 @@ def main():
     out = process_output(formatter_input)
     if isinstance(out, OutputRejection):
         print("Output rejected:", out.reason, f"(code={out.code})")
-        return 1
-    print(out.slack_message)
+    else:
+        print(out.slack_message)
+
+    # Send to Slack when channel_id is present (e.g. from Slack request).
+    if result.channel_id:
+        send_result = send_output_to_slack(
+            channel_id=result.channel_id,
+            output=out,
+            thread_ts=result.thread_ts,
+        )
+        if not send_result.ok:
+            print("Slack send failed:", send_result.error)
+            return 1
     return 0
 
 
