@@ -5,7 +5,10 @@ Uses the Slack Web API (chat.postMessage) with a bot token from the environment.
 """
 
 import os
+import ssl
 from dataclasses import dataclass
+
+import certifi
 
 from .models import FormattedOutput, OutputRejection
 
@@ -71,7 +74,8 @@ def send_to_slack(
             error="slack_sdk is not installed. Install with: poetry add slack-sdk",
         )
 
-    client = WebClient(token=token)
+    ssl_context = ssl.create_default_context(cafile=certifi.where())
+    client = WebClient(token=token, ssl=ssl_context)
     payload = {
         "channel": channel_id.strip(),
         "text": message.strip(),
