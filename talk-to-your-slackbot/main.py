@@ -43,7 +43,7 @@ def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
 
 def main():
     """Example: intake then load stats (PandasAI-compatible DataFrames)."""
-    assumed_input = "why did I lose"
+    assumed_input = "why did player 3 and player 4 win"
     result = run_intake(assumed_input)
 
     if isinstance(result, IntakeRejection):
