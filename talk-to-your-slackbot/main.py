@@ -1,5 +1,5 @@
 """
-Entrypoint: intake -> engine (load stats -> plan -> reason) -> (later: output).
+Entrypoint: intake -> engine (load stats -> plan -> reason) -> output.
 
 Run from repo root with the package on PYTHONPATH, e.g.:
   PYTHONPATH=talk-to-your-slackbot python talk-to-your-slackbot/main.py
@@ -17,6 +17,7 @@ if __name__ == "__main__":
 
 from intake import IntakeRejection, RawSlackInput, process
 from engine import LoadError, load_stats, plan, reason
+from output import FormatterInput, OutputRejection, process_output
 
 
 def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
@@ -66,10 +67,18 @@ def main():
 
     # Reasoner: send data + context to OpenAI API (Custom GPT style).
     reasoning = reason(result.text, loaded, investigation_plan)
-    if reasoning.error:
-        print("Reasoner:", reasoning.error)
-    else:
-        print("Analysis:", reasoning.response)
+
+    # Output: format for Slack and apply guardrails.
+    formatter_input = FormatterInput(
+        engine_response=reasoning.response,
+        error=reasoning.error,
+        memory_context=None,
+    )
+    out = process_output(formatter_input)
+    if isinstance(out, OutputRejection):
+        print("Output rejected:", out.reason, f"(code={out.code})")
+        return 1
+    print(out.slack_message)
     return 0
 
 
