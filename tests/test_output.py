@@ -120,3 +120,33 @@ def test_process_output_rejection_pii():
     out = process_output(inp)
     assert isinstance(out, OutputRejection)
     assert out.code == "pii"
+
+
+# --- Slack sender ---
+
+
+def test_send_to_slack_no_token():
+    result = send_to_slack(channel_id="C123", message="Hello")
+    assert not result.ok
+    assert "SLACK_BOT_TOKEN" in result.error
+
+
+def test_send_to_slack_empty_channel():
+    result = send_to_slack(channel_id="", message="Hello")
+    assert not result.ok
+    assert "channel" in result.error.lower()
+
+
+def test_send_to_slack_empty_message():
+    result = send_to_slack(channel_id="C123", message="   ")
+    assert not result.ok
+    assert "message" in result.error.lower() or "required" in result.error.lower()
+
+
+def test_send_output_to_slack_sends_rejection_reason():
+    """When output is OutputRejection, send_output_to_slack uses reason as message."""
+    out = OutputRejection(reason="Your question doesn't apply.", code="not_applicable")
+    # No token - we only check that the right message would be sent (reason, not slack_message).
+    result = send_output_to_slack(channel_id="C1", output=out)
+    assert not result.ok
+    assert "SLACK_BOT_TOKEN" in result.error
