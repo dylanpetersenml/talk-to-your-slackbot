@@ -26,6 +26,8 @@ def _detect_intent(question: str) -> str:
     q = _normalize(question)
     if any(w in q for w in ("lose", "lost", "why did we lose", "why did i lose")):
         return "why_lost"
+    if any(w in q for w in ("won", "win", "why did we win", "how did we win")):
+        return "why_won"
     if any(w in q for w in ("error", "fault", "unforced", "errors")):
         return "errors_faults"
     if any(w in q for w in ("give up", "most points", "where")) and "point" in q:
@@ -52,6 +54,13 @@ def _plan_for_intent(intent: str, available_tables: frozenset[str]) -> tuple[lis
             "game_df": ["team0_outcome", "team1_outcome", "team0_kitchen_pct", "team1_kitchen_pct"],
             "players_df": ["team", "shot_count", "avg_shot_quality", "net_fault_pct", "out_fault_pct", "team_shot_percentage"],
             "shot_stats_df": ["success_pct", "rally_win_pct", "out_fault_pct", "net_fault_pct", "shot_type"],
+        }
+    elif intent == "why_won":
+        focus_tables = [t for t in ["game_df", "players_df", "shot_stats_df"] if t in available_tables]
+        focus_hints = {
+            "game_df": ["team0_outcome", "team1_outcome", "team0_kitchen_pct", "team1_kitchen_pct"],
+            "players_df": ["team", "shot_count", "avg_shot_quality", "team_shot_percentage", "net_fault_pct", "out_fault_pct"],
+            "shot_stats_df": ["success_pct", "rally_win_pct", "shot_type", "avg_quality"],
         }
     elif intent == "where_points_lost":
         focus_tables = [t for t in ["players_df", "shot_stats_df", "kitchen_arrival_df"] if t in available_tables]

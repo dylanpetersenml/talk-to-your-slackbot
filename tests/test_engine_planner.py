@@ -43,6 +43,16 @@ def test_plan_why_lost_intent():
     assert "team0_outcome" in result.focus_hints["game_df"]
 
 
+def test_plan_why_won_intent():
+    loaded = _minimal_loaded_stats()
+    result = plan("Why did we win this game?", loaded)
+    assert result.intent == "why_won"
+    assert "game_df" in result.focus_tables
+    assert "players_df" in result.focus_tables
+    assert "shot_stats_df" in result.focus_tables
+    assert "team0_outcome" in result.focus_hints["game_df"]
+
+
 def test_plan_where_points_lost_intent():
     loaded = _minimal_loaded_stats()
     result = plan("Where did we give up the most points?", loaded)
