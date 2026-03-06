@@ -1,4 +1,4 @@
-"""Tests for the Engine reasoner (PandasAI) component."""
+"""Tests for the Engine reasoner (OpenAI API / Custom GPT) component."""
 
 from pathlib import Path
 
@@ -26,15 +26,25 @@ def _minimal_loaded_stats() -> LoadedStats:
 
 
 def test_reason_returns_result():
-    """reason() returns ReasonerResult; without API key or pandasai, error is set."""
+    """reason() returns ReasonerResult; without API key, error is set."""
     loaded = _minimal_loaded_stats()
     investigation_plan = plan("Why did I lose?", loaded)
     result = reason("Why did I lose?", loaded, investigation_plan)
     assert isinstance(result, ReasonerResult)
-    # Either error (no API key, pandasai not installed, or analysis failed) or response
     assert result.error is not None or result.response is not None
     if result.error:
         assert len(result.error) > 0
+
+
+def test_reason_data_payload_includes_tables():
+    """Data payload includes game_df and players_df content."""
+    from engine.reasoner import _build_data_payload
+    loaded = _minimal_loaded_stats()
+    investigation_plan = plan("Why did I lose?", loaded)
+    payload = _build_data_payload(loaded, investigation_plan)
+    assert "game_df" in payload
+    assert "players_df" in payload
+    assert "v1" in payload
 
 
 def test_reason_semantic_context_loads():
