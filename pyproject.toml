@@ -10,6 +10,9 @@ dependencies = ["pandas>=2.0", "pyyaml>=6.0"]
 dev = ["pytest>=7.0"]
 reasoner = ["pandasai>=2.0"]
 
+[tool.poetry]
+package-mode = false
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["talk-to-your-slackbot"]
