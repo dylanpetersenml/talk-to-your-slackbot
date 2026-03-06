@@ -53,3 +53,27 @@ class LoadError:
     """
 
     message: str
+
+
+@dataclass
+class Plan:
+    """
+    Output of the planner: which tables and measures to use to answer the question.
+
+    The reasoner (e.g. PandasAI) uses this to focus analysis. Memory can be
+    incorporated later for multi-match patterns.
+
+    Attributes
+    ----------
+    intent : str
+        Short tag: e.g. "why_lost", "compare_serving_returning", "where_points_lost".
+    focus_tables : list of str
+        Table names to prioritize: "game_df", "players_df", "shot_stats_df",
+        "kitchen_arrival_df", "ball_directions_df".
+    focus_hints : dict
+        Optional table -> list of column names or values (e.g. shot_type) to emphasize.
+    """
+
+    intent: str
+    focus_tables: list[str]
+    focus_hints: dict[str, list[str]]

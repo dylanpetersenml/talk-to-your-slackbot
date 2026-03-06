@@ -1,5 +1,5 @@
 """
-Entrypoint: intake -> engine (load stats) -> (later: planner, reasoner, output).
+Entrypoint: intake -> engine (load stats -> plan) -> (later: reasoner, output).
 
 Run from repo root with the package on PYTHONPATH, e.g.:
   PYTHONPATH=talk-to-your-slackbot python talk-to-your-slackbot/main.py
@@ -16,7 +16,7 @@ if __name__ == "__main__":
         sys.path.insert(0, str(pkg_dir))
 
 from intake import IntakeRejection, RawSlackInput, process
-from engine import LoadError, load_stats
+from engine import LoadError, load_stats, plan
 
 
 def run_intake(text: str, user_id: str = "U1", channel_id: str = "C1"):
@@ -58,8 +58,11 @@ def main():
         print("Stats load failed:", loaded.message)
         return 1
 
+    # Planner: which fields to investigate for this question.
+    investigation_plan = plan(result.text, loaded)
     print("Validated:", result.text)
     print("Stats loaded: game_id =", loaded.game_df["game_id"].iloc[0])
+    print("Plan: intent =", investigation_plan.intent, "| focus_tables =", investigation_plan.focus_tables)
     print("DataFrames ready for PandasAI:")
     print("  game_df:", loaded.game_df.shape)
     print("  players_df:", loaded.players_df.shape)
