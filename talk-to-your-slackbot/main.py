@@ -8,6 +8,7 @@ Stats path: STATS_PATH env or default stats.json. Set OPENAI_API_KEY for reasone
 """
 
 import os
+import re
 import sys
 import threading
 from pathlib import Path
@@ -168,6 +169,43 @@ def _create_slack_app(stats_path: Path):
         threading.Thread(target=run, daemon=True).start()
         return jsonify({"text": "Analyzing your match… I'll post the insight here shortly."}), 200
 
+    @app.route("/slack/events", methods=["POST"])
+    def slack_events():
+        # Events API: url_verification challenge and app_mention (when users @mention the bot).
+        body = request.get_json(silent=True) or {}
+        if body.get("type") == "url_verification":
+            return jsonify({"challenge": body.get("challenge", "")}), 200
+
+        if body.get("type") != "event_callback":
+            return jsonify({}), 200
+
+        event = body.get("event") or {}
+        if event.get("type") != "app_mention":
+            return jsonify({}), 200
+
+        # Strip <@U0LAN0Z89> style mentions from the start of text to get the question.
+        text = (event.get("text") or "").strip()
+        text = re.sub(r"^<@[A-Z0-9]+>\s*", "", text).strip()
+
+        if not text:
+            return jsonify({}), 200
+
+        user_id = event.get("user") or "U1"
+        channel_id = event.get("channel") or ""
+        thread_ts = event.get("ts")
+
+        def run_event():
+            run_pipeline(
+                text=text,
+                user_id=user_id,
+                channel_id=channel_id,
+                thread_ts=thread_ts,
+                stats_path=stats_path,
+            )
+
+        threading.Thread(target=run_event, daemon=True).start()
+        return jsonify({}), 200
+
     return app
 
 
@@ -194,7 +232,11 @@ def main() -> int:
     # No args: start HTTP server so Slack can send user questions (slash command).
     app = _create_slack_app(stats_path)
     port = int(os.environ.get("PORT", "5000"))
-    print(f"Slack handler listening on port {port}. Use slash command Request URL: http://localhost:{port}/slack/command")
+    print(
+        f"Slack handler listening on port {port}. "
+        f"Slash command URL: http://localhost:{port}/slack/command  "
+        f"Events API URL: http://localhost:{port}/slack/events"
+    )
     app.run(host="0.0.0.0", port=port)
     return 0
 
