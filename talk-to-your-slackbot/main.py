@@ -126,11 +126,11 @@ def run_pipeline(
         return 1
     print(out.slack_message)
 
-    if result.channel_id:
+    if channel_id:
         send_result = send_output_to_slack(
-            channel_id=result.channel_id,
+            channel_id=channel_id,
             output=out,
-            thread_ts=result.thread_ts,
+            thread_ts=thread_ts,
         )
         if not send_result.ok:
             print("Slack send failed:", send_result.error)
@@ -211,7 +211,8 @@ def _create_slack_app(stats_path: Path):
 
 def main() -> int:
     """Run pipeline with CLI question or start Slack server for user input."""
-    stats_path = Path(os.environ.get("STATS_PATH", "")) or (
+    stats_env = (os.environ.get("STATS_PATH") or "").strip()
+    stats_path = Path(stats_env) if stats_env else (
         Path(__file__).resolve().parent.parent / "stats.json"
     )
 
