@@ -21,10 +21,21 @@ if __name__ == "__main__":
 
 from intake import IntakeRejection, RawSlackInput, process
 from engine import LoadError, load_stats, plan, reason
-from output import FormatterInput, OutputRejection, process_output, send_output_to_slack
+from output import (
+    FormatterInput,
+    OutputRejection,
+    process_output,
+    send_output_to_slack,
+    send_to_slack,
+)
 
 
-def run_intake(text: str, user_id: str = "U1", channel_id: str = "D0AJGBPE8SK"):
+def run_intake(
+    text: str,
+    user_id: str = "U1",
+    channel_id: str = "D0AJGBPE8SK",
+    thread_ts: str | None = None,
+):
     """
     Take raw Slack-style input text and run it through the intake subsystem.
 
@@ -36,20 +47,74 @@ def run_intake(text: str, user_id: str = "U1", channel_id: str = "D0AJGBPE8SK"):
         Slack user ID for permission checks.
     channel_id : str, optional
         Slack channel ID.
+    thread_ts : str, optional
+        Thread timestamp when the message is in a thread.
 
     Returns
     -------
     ValidatedInput | IntakeRejection
         Validated input to pass to the engine, or a rejection with a reason.
     """
-    raw = RawSlackInput(text=text, user_id=user_id, channel_id=channel_id)
+    raw = RawSlackInput(
+        text=text, user_id=user_id, channel_id=channel_id, thread_ts=thread_ts
+    )
     return process(raw)
+
+
+def run_pipeline_from_slack(
+    text: str,
+    user_id: str,
+    channel_id: str,
+    thread_ts: str | None = None,
+) -> None:
+    """
+    Run the full pipeline (intake -> engine -> output) using Slack message as the
+    question, and post the result (or a user-friendly error) back to Slack.
+
+    Parameters
+    ----------
+    text : str
+        User message from Slack (the question).
+    user_id : str
+        Slack user ID.
+    channel_id : str
+        Slack channel ID to post the response to.
+    thread_ts : str, optional
+        Thread timestamp to reply in thread.
+    """
+    result = run_intake(text, user_id=user_id, channel_id=channel_id, thread_ts=thread_ts)
+
+    if isinstance(result, IntakeRejection):
+        send_to_slack(channel_id=channel_id, message=result.reason, thread_ts=thread_ts)
+        return
+
+    stats_path = Path(__file__).resolve().parent.parent / "stats.json"
+    loaded = load_stats(stats_path)
+
+    if isinstance(loaded, LoadError):
+        send_to_slack(
+            channel_id=channel_id, message=loaded.message, thread_ts=thread_ts
+        )
+        return
+
+    investigation_plan = plan(result.text, loaded)
+    reasoning = reason(result.text, loaded, investigation_plan)
+
+    formatter_input = FormatterInput(
+        engine_response=reasoning.response,
+        error=reasoning.error,
+        memory_context=None,
+    )
+    out = process_output(formatter_input)
+    send_output_to_slack(
+        channel_id=channel_id, output=out, thread_ts=result.thread_ts
+    )
 
 
 def main():
     """Example: intake then load stats (PandasAI-compatible DataFrames)."""
     assumed_input = "why did player 3 and player 4 win"
-    result = run_intake(assumed_input)
+    result = run_intake(assumed_input, thread_ts=None)
 
     if isinstance(result, IntakeRejection):
         print("Rejected:", result.reason, f"(code={result.code})")
