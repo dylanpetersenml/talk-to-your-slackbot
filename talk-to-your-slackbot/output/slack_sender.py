@@ -52,18 +52,18 @@ def send_to_slack(
     SendResult
         ok=True when sent; ok=False with error set when token missing or API fails.
     """
+    if not channel_id or not channel_id.strip():
+        return SendResult(ok=False, error="channel_id is required to send to Slack.")
+
+    if not message or not message.strip():
+        return SendResult(ok=False, error="Message text is required.")
+
     token = os.environ.get("SLACK_BOT_TOKEN", "").strip()
     if not token:
         return SendResult(
             ok=False,
             error="SLACK_BOT_TOKEN is not set. Set it to post responses to Slack.",
         )
-
-    if not channel_id or not channel_id.strip():
-        return SendResult(ok=False, error="channel_id is required to send to Slack.")
-
-    if not message or not message.strip():
-        return SendResult(ok=False, error="Message text is required.")
 
     try:
         from slack_sdk import WebClient
