@@ -14,6 +14,10 @@ if __name__ == "__main__":
     pkg_dir = Path(__file__).resolve().parent
     if str(pkg_dir) not in sys.path:
         sys.path.insert(0, str(pkg_dir))
+    # Load .env from repo root so OPENAI_API_KEY, SLACK_BOT_TOKEN, etc. are set.
+    from dotenv import load_dotenv
+    env_file = pkg_dir.parent / ".env"
+    load_dotenv(env_file)
 
 from intake import IntakeRejection, RawSlackInput, process
 from engine import LoadError, load_stats, plan, reason
