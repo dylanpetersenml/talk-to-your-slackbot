@@ -10,6 +10,32 @@ if TYPE_CHECKING:
 
 
 @dataclass
+class LoadMetrics:
+    """
+    Key metrics computed from loaded stats (for monitoring and data-quality checks).
+
+    Attributes
+    ----------
+    median_return_speed : float or None
+        Median return-shot speed (mph) across players.
+    median_baseline_distance : float or None
+        Median baseline distance (ft) for returns across players.
+    median_height_above_net : float or None
+        Median height above net (ft) for returns across players.
+    total_shots : int
+        Sum of shot_count across all players (game activity level).
+    kitchen_rallies : int or None
+        Number of kitchen rallies in the game.
+    """
+
+    median_return_speed: float | None
+    median_baseline_distance: float | None
+    median_height_above_net: float | None
+    total_shots: int
+    kitchen_rallies: int | None
+
+
+@dataclass
 class LoadedStats:
     """
     Successfully loaded stats: raw JSON and PandasAI-compatible DataFrames.
@@ -31,6 +57,8 @@ class LoadedStats:
         One row per (player, role): numerator, denominator.
     ball_directions_df : pd.DataFrame
         One row per (player, direction): count.
+    metrics : LoadMetrics
+        Small set of key metrics computed from the loaded data.
     """
 
     raw: dict
@@ -39,6 +67,7 @@ class LoadedStats:
     shot_stats_df: pd.DataFrame
     kitchen_arrival_df: pd.DataFrame
     ball_directions_df: pd.DataFrame
+    metrics: LoadMetrics
 
 
 @dataclass

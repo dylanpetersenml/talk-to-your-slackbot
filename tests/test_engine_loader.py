@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from engine import LoadError, LoadedStats, load_stats
+from engine import LoadError, LoadMetrics, LoadedStats, load_stats
 
 
 def test_load_stats_missing_file():
@@ -74,6 +74,13 @@ def test_load_stats_success_returns_dataframes():
     assert "direction" in result.ball_directions_df.columns
     assert len(result.kitchen_arrival_df) >= 1
     assert "role" in result.kitchen_arrival_df.columns
+    assert isinstance(result.metrics, LoadMetrics)
+    assert result.metrics.total_shots >= 0
+    assert result.metrics.kitchen_rallies is None or result.metrics.kitchen_rallies >= 0
+    # Return-focused metrics (from returns shot type)
+    assert result.metrics.median_return_speed is None or result.metrics.median_return_speed >= 0
+    assert result.metrics.median_baseline_distance is None or result.metrics.median_baseline_distance >= 0
+    assert result.metrics.median_height_above_net is None or result.metrics.median_height_above_net >= 0
 
 
 def test_load_stats_minimal_valid(tmp_path):
@@ -117,3 +124,10 @@ def test_load_stats_minimal_valid(tmp_path):
     assert len(result.shot_stats_df) >= 1
     assert len(result.kitchen_arrival_df) >= 1
     assert len(result.ball_directions_df) >= 1
+    m = result.metrics
+    assert m.total_shots == 10
+    assert m.kitchen_rallies == 5
+    # Minimal fixture has no "returns" block, so return medians are None
+    assert m.median_return_speed is None
+    assert m.median_baseline_distance is None
+    assert m.median_height_above_net is None

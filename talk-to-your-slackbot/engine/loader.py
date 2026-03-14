@@ -12,6 +12,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from .metrics import compute_metrics
 from .models import LoadError, LoadedStats
 
 
@@ -124,7 +125,12 @@ def _build_shot_stats_table(data: dict, game_id: str) -> pd.DataFrame:
                 "shot_type": shot_type,
                 "count": count,
                 "avg_quality": block.get("average_quality"),
+                "avg_baseline_distance": block.get("average_baseline_distance"),
+                "median_baseline_distance": block.get("median_baseline_distance"),
+                "avg_height_above_net": block.get("average_height_above_net"),
+                "median_height_above_net": block.get("median_height_above_net"),
                 "avg_speed": speed.get("average"),
+                "median_speed": speed.get("median"),
                 "fastest_speed": speed.get("fastest"),
                 "success_pct": outcome.get("success_percentage"),
                 "rally_win_pct": outcome.get("rally_won_percentage"),
@@ -247,6 +253,8 @@ def load_stats(path: str | Path | None = None) -> LoadedStats | LoadError:
     kitchen_arrival_df = _build_kitchen_arrival_table(data, game_id)
     ball_directions_df = _build_ball_directions_table(data, game_id)
 
+    metrics = compute_metrics(game_df, players_df, shot_stats_df)
+
     return LoadedStats(
         raw=data,
         game_df=game_df,
@@ -254,4 +262,5 @@ def load_stats(path: str | Path | None = None) -> LoadedStats | LoadError:
         shot_stats_df=shot_stats_df,
         kitchen_arrival_df=kitchen_arrival_df,
         ball_directions_df=ball_directions_df,
+        metrics=metrics,
     )
