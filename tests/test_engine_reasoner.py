@@ -5,7 +5,7 @@ from pathlib import Path
 import pandas as pd
 import pytest
 
-from engine import LoadedStats, Plan, ReasonerResult, load_stats, plan, reason
+from engine import LoadedStats, Plan, ReasonerResult, compute_metrics, load_stats, plan, reason
 
 
 def _minimal_loaded_stats() -> LoadedStats:
@@ -15,6 +15,7 @@ def _minimal_loaded_stats() -> LoadedStats:
     shot_df = pd.DataFrame([{"game_id": "v1", "player_id": 0, "shot_type": "serves", "count": 2}])
     kitchen_df = pd.DataFrame([{"game_id": "v1", "player_id": 0, "role": "serving_oneself", "numerator": 2, "denominator": 2}])
     ball_df = pd.DataFrame([{"game_id": "v1", "player_id": 0, "direction": "down_the_middle", "count": 3}])
+    metrics = compute_metrics(game_df, players_df, shot_df)
     return LoadedStats(
         raw={},
         game_df=game_df,
@@ -22,6 +23,7 @@ def _minimal_loaded_stats() -> LoadedStats:
         shot_stats_df=shot_df,
         kitchen_arrival_df=kitchen_df,
         ball_directions_df=ball_df,
+        metrics=metrics,
     )
 
 

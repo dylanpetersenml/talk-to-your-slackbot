@@ -6,15 +6,18 @@ reasoner analyzes key factors using PandasAI and the semantic layer (pickleball_
 """
 
 from .loader import load_stats
-from .models import LoadError, LoadedStats, Plan, ReasonerResult
+from .metrics import compute_metrics
+from .models import LoadError, LoadMetrics, LoadedStats, Plan, ReasonerResult
 from .planner import plan
 from .qa_log import log_qa
 from .reasoner import reason
 
 __all__ = [
+    "compute_metrics",
     "load_stats",
-    "LoadedStats",
     "LoadError",
+    "LoadMetrics",
+    "LoadedStats",
     "log_qa",
     "Plan",
     "plan",
