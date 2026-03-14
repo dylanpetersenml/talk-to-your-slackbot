@@ -20,7 +20,7 @@ if __name__ == "__main__":
     load_dotenv(env_file)
 
 from intake import IntakeRejection, RawSlackInput, process
-from engine import LoadError, load_stats, plan, reason
+from engine import LoadError, load_stats, log_qa, plan, reason
 from output import (
     FormatterInput,
     OutputRejection,
@@ -98,6 +98,7 @@ def run_pipeline_from_slack(
         return
 
     investigation_plan = plan(result.text, loaded)
+    log_qa(result.text, investigation_plan.intent, investigation_plan.focus_tables)
     reasoning = reason(result.text, loaded, investigation_plan)
 
     formatter_input = FormatterInput(
@@ -130,6 +131,7 @@ def main():
 
     # Planner: which fields to investigate for this question.
     investigation_plan = plan(result.text, loaded)
+    log_qa(result.text, investigation_plan.intent, investigation_plan.focus_tables)
     print("Validated:", result.text)
     print("Stats loaded: game_id =", loaded.game_df["game_id"].iloc[0])
     print("Plan: intent =", investigation_plan.intent, "| focus_tables =", investigation_plan.focus_tables)
